@@ -11,18 +11,11 @@ Az adatbázis felépítése:
   - Visitor : id(int),reservation_id(int),name(string),phone_number(int),email(string)
   - Employee : id(int),name(string) <-- szerepkörök miatt gondolom, de lehet ezt nem is kell az adatbázisban tárolni
 
-Funkcionális követelmények:
-  -
-
-Nem funkcionális követelmények:
-  - 
-
-Szakterületi fogalomjegyzék:
-  -
-
-
 Szerepkörök:
   - Felhasználók
   - Alkalmazottak
   - Rendszergazdák
+  
+  
+További információ a README.docx file-ban.
 
