@@ -42,7 +42,13 @@ Az alkalmazás egy mozi jegyfoglalásának a weben történő működését tesz
 	- Ha olyan helyet választottunk, ami már foglalt volt, akkor nem történik semmi.
 
 ##### Vendég:
-
+- Szeretnénk megnézi egy film adatait: Rákattintottunk a „Tovább a filmhez” gombra a választott film alatt. A választott film adatlapjára irányítódunk.
+- Szeretnénk megadni a lefoglalni kívánt jegyek mennyiségét: Kiválasztottuk a számunkra megfelelő vetítési időpontot a táblázatból és a felugró ablakban kiválasztottuk a jegyek típusát és darabszámát. 
+	- Kapunk egy értesítést, hogy a foglaláshoz felhasználói fiók szükséges és egy felugró ablakban lehetőségünk van regisztrálni.
+- Szeretnénk regisztrálni: Rákattintottunk a jobb felső sarokban lévő login gombra, majd a felugró ablakban a regisztráció gombra.
+	- Ha egy már létező e-mail címmel szeretnénk regisztrálni, akkor egy hibaüzenetet kapunk, hogy az e-mail címhez már tartozik felhasználói fiók.
+	- Ha még az adatbázisban nem szereplő e-mail címmel szeretnénk regszisztrálni és a jelszó, valamint a jelszó megerősítés mezőben is ugyanaz a szöveg szerepel, akkor a program létrehozza a felhasználói fiókot.
+	- Ha még az adatbázisban nem szereplő e-mail címmel szeretnénk regszisztrálni, de a jelszó, valamint a jelszó megerősítés mezőben nem ugyanaz a szöveg szerepel, akkor hibaüzenetet kapunk, hogy nem sikerült a jelszó megerősítése.
 
 ## Nem funkcionális követelmények:
 **termék követelmények:**
