@@ -82,11 +82,10 @@ Az alkalmazás egy mozi jegyfoglalásának a weben történő működését tesz
 - A felhasználó jogainak megsértése esetén a fejlesztők ellen bírósághoz fordulhat.
 
 Az adatbázis felépítése:
-6 tábla
-  - Movie : id(int),title(string),duration(time?),description(string),subtitle(bool)
-  - Auditorium : id(int),name(string),seats(int,int?)
-  - Screening : id(int),movie_id(int),auditorium_id(int),screening_start(time?)
+5 tábla
+  - Movie : id(int),title(string),duration(time),description(string),subtitle(bool)
+  - Auditorium : id(int),name(string),seats(int,int)
+  - Screening : id(int),movie_id(int),auditorium_id(int),screening_start(time)
   - Reservation : id(int),screening_id(int),reserved_auditorium(int), reserved_seats(int,int)
   - Visitor : id(int),reservation_id(int),name(string),phone_number(int),email(string)
-  - Employee : id(int),name(string) <-- szerepkörök miatt gondolom, de lehet ezt nem is kell az adatbázisban tárolni
 
