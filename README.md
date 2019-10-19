@@ -2,32 +2,29 @@
 
 Az alkalmazás egy mozi jegyfoglalásának a weben történő működését teszi lehetővé. A webes felületen keresztül látható a moziműsor és itt tudnak a felhasználók jegyet foglalni a különböző vetítésekre. A filmeket kiválasztva rövid leírást és adatokat kapunk az adott filmről, továbbá a vetítések időpontját. Ekkor lehetősége van a felhasználónak helyet foglalnia, megadva a helyet magát (sor, oszlop) és személyes adatait (név, email cím, telefonszám).
 
-## Felhasználói felület:
-#### Kezdőlap:
-![](https://github.com/OgeeManta/cinema-ticket-reservation/blob/master/Kezd%C5%91lap.png?raw=true)
+## Követelményanalízis
+### Szakterületi fogalomjegyzék
+- *Film*: Felvett mozgókép, amelyet általában több ember (közönség) előtt bemutatnak.
+- *Mozi*: Filmvetítésre alkalmas épület vagy épületrész, amelyben közönség számára vetítenek filmeket.
+- *Terem*: Tágas helyiség, amely sok személy befogadására alkalmas, általában középületekben, kastélyokban, vagy más nagy épületekben található.
+- *Jegy*: Részvételre jogosító cédula; egy meghatározott alakú és szövegű papír- vagy kartonlapocska, amely egy személyt feljogosít egy rendezvényre való belépésre, egy előadás, bemutató vagy kiállítás megtekintésére.
+- *Foglalás*: Megállapodás (szállodával, étteremmel, színházzal, légitársasággal stb.) hogy tartsanak fenn számunkra helyet egy meghatározott jövőbeli időpontra.
+- *Trailer*: Bemutató reklámfilm; részletekből összevágott, néhány jelenetet bemutató ismertető, amely egy hamarosan műsorra kerülő filmet, műsort népszerűsít.
 
-#### Film adatai:
-![](https://github.com/OgeeManta/cinema-ticket-reservation/blob/master/Film_adatai.png?raw=true)
+### Használatieset-modell
+#### Szerepkörök:
+- *Vendég*: a filmek adatait megtekintheti, de foglalni nem tud.
+- *Felhasználó*: megtekintheti a filmek adatait, és foglalni is tud.
+- *Admin*: módosíthatja a filmeket, és a foglalási adatokat.
 
-#### Foglalás:
-![](https://github.com/OgeeManta/cinema-ticket-reservation/blob/master/Foglal%C3%A1s.png?raw=true)
+### Használati esetek (diagram):
+(később)
 
-## Szakterületi fogalomjegyzék:
-•	*Film*: Felvett mozgókép, amelyet általában több ember (közönség) előtt bemutatnak.
-•	*Mozi*: Filmvetítésre alkalmas épület vagy épületrész, amelyben közönség számára vetítenek filmeket.
-•	*Terem*: Tágas helyiség, amely sok személy befogadására alkalmas, általában középületekben, kastélyokban, vagy más nagy épületekben található.
-•	*Jegy*: Részvételre jogosító cédula; egy meghatározott alakú és szövegű papír- vagy kartonlapocska, amely egy személyt feljogosít egy rendezvényre való belépésre, egy előadás, bemutató vagy kiállítás megtekintésére.
-•	*Foglalás*: Megállapodás (szállodával, étteremmel, színházzal, légitársasággal stb.) hogy tartsanak fenn számunkra helyet egy meghatározott jövőbeli időpontra.
-•	*Trailer*: Bemutató reklámfilm; részletekből összevágott, néhány jelenetet bemutató ismertető, amely egy hamarosan műsorra kerülő filmet, műsort népszerűsít.
+### Egy folyamat ábrázolása:
+(később)
 
-## Szerepkörök:
-•	*Vendég*: a filmek adatait megtekintheti, de foglalni nem tud.
-•	*Felhasználó*: megtekintheti a filmek adatait, és foglalni is tud.
-•	*Admin*: módosíthatja a filmeket, és a foglalási adatokat.
-
-## Funkcionális követelmények:
+### Funkcionális követelmények:
 #### Felhasználói történetek: 
-
 ##### Felhasználó:
 - Szeretnénk megnézi egy film adatait: Rákattintottunk a „Tovább a filmhez” gombra a választott film alatt. A választott film adatlapjára irányítódunk.
 - Szeretnénk megadni a lefoglalni kívánt jegyek mennyiségét: Kiválasztottuk a számunkra megfelelő vetítési időpontot a táblázatból és a felugró ablakban kiválasztottuk a jegyek típusát és darabszámát. 
@@ -49,8 +46,11 @@ Az alkalmazás egy mozi jegyfoglalásának a weben történő működését tesz
 	- Ha egy már létező e-mail címmel szeretnénk regisztrálni, akkor egy hibaüzenetet kapunk, hogy az e-mail címhez már tartozik felhasználói fiók.
 	- Ha még az adatbázisban nem szereplő e-mail címmel szeretnénk regszisztrálni és a jelszó, valamint a jelszó megerősítés mezőben is ugyanaz a szöveg szerepel, akkor a program létrehozza a felhasználói fiókot.
 	- Ha még az adatbázisban nem szereplő e-mail címmel szeretnénk regszisztrálni, de a jelszó, valamint a jelszó megerősítés mezőben nem ugyanaz a szöveg szerepel, akkor hibaüzenetet kapunk, hogy nem sikerült a jelszó megerősítése.
+	
+##### Admin:
+(még kell)
 
-## Nem funkcionális követelmények:
+### Nem funkcionális követelmények:
 **termék követelmények:**
 - hatékonyság: 
 	- A program válasz ideje a felhasználó inputjára kevesebb, mint 0,5 mp legyen	.
@@ -68,6 +68,7 @@ Az alkalmazás egy mozi jegyfoglalásának a weben történő működését tesz
 	- Egyszerre több felhasználó tudja igénybe venni a programot több gépen.
 	- Az átlagos használati idő: 5-20 perc.
 	- A használati idő alatt a program funkciói folyamatosan igénybe vannak véve.
+
 **külső követelmények:**
 - A fejlesztők az alábbiakban ismertetik adatkezelési elveiket. Adatkezelési alapelveik összhangban vannak az adatvédelemről szóló jogszabályokkal:
 	- 1998.évi XIX. törvény – a büntetőeljárásról
@@ -81,11 +82,53 @@ Az alkalmazás egy mozi jegyfoglalásának a weben történő működését tesz
 - A felhasználó kérhet tájékoztatást a személyes adatai kezeléséről, illetve kérheti az adatok helyesbítését, valamint törlését.
 - A felhasználó jogainak megsértése esetén a fejlesztők ellen bírósághoz fordulhat.
 
-Az adatbázis felépítése:
+## Tervezés
+### Architektúra terv
+#### Oldaltérkép
+(később)
+
+#### Végpontok
+(most kell)
+
+### Felhasználói felület-modell
+#### Kezdőlap:
+![Kezdőlap](https://github.com/OgeeManta/cinema-ticket-reservation/blob/master/Kezd%C5%91lap.png?raw=true)
+
+#### Film adatai:
+![Film adatai](https://github.com/OgeeManta/cinema-ticket-reservation/blob/master/Film_adatai.png?raw=true)
+
+#### Foglalás:
+![Foglalás](https://github.com/OgeeManta/cinema-ticket-reservation/blob/master/Foglal%C3%A1s.png?raw=true)
+
+### Osztálymodell
+#### Adatmodell:
+(most kell)
+
+#### Adatbázisterv
 5 tábla
   - Movie : id(int),title(string),duration(time),description(string),subtitle(bool)
   - Auditorium : id(int),name(string),seats(int,int)
   - Screening : id(int),movie_id(int),auditorium_id(int),screening_start(time)
   - Reservation : id(int),screening_id(int),reserved_auditorium(int), reserved_seats(int,int)
   - Visitor : id(int),reservation_id(int),name(string),phone_number(int),email(string)
+  
+(kell diagram is!)
 
+#### Állapotdiagram:
+(később)
+
+## Implementáció
+### Fejlesztői környezet bemutatása:
+(most kell)
+
+### Könyvtárstruktúra:
+(most kell)
+
+## Felhasználói dokumentáció
+(később)
+### Ajánlott konfigurációk:
+
+### Telepítés lépései:
+
+### A program használata:
+  
