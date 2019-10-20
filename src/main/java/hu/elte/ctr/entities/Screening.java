@@ -31,20 +31,14 @@ public class Screening implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer Id;
+    private Integer id;
     
     @Column
-    private Integer auditoriumId;
-
-    @Column
-    @NotNull
-    private String titleOfMovie;
-
-    @Column
-    @NotNull
-    private Integer dateOfScreening;
+    private Integer auditoriumid;
     
     @Column
-    @NotNull
-    private Integer timeOfScreening;
+    private Integer movieid;
+    
+    @Column
+    private Integer timeofscreening;
 }

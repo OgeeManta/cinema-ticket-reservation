@@ -5,7 +5,7 @@
  */
 package hu.elte.ctr.controllers;
 
-import hu.elte.ctr.entities.Screening;
+import hu.elte.ctr.entities.Visitor;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,46 +17,46 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import hu.elte.ctr.repositories.ScreeningRepository;
+import hu.elte.ctr.repositories.VisitorRepository;
 
 /**
  *
  * @author Betűmix
  */
 @RestController
-@RequestMapping("/screenings")
-public class ScreeningController {
+@RequestMapping("/visitors")
+public class VisitorController {
 
     @Autowired
-    private ScreeningRepository screeningRepository;
+    private VisitorRepository visitorRepository;
 
     @GetMapping("")
-    public ResponseEntity<Iterable<Screening>> getAll() {
-        return ResponseEntity.ok(screeningRepository.findAll());
+    public ResponseEntity<Iterable<Visitor>> getAll() {
+        return ResponseEntity.ok(visitorRepository.findAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Screening> get(@PathVariable Integer id) {
-        Optional<Screening> screening = screeningRepository.findById(id);
-        if (screening.isPresent()) {
-            return ResponseEntity.ok(screening.get());
+    public ResponseEntity<Visitor> get(@PathVariable Integer id) {
+        Optional<Visitor> visitor = visitorRepository.findById(id);
+        if (visitor.isPresent()) {
+            return ResponseEntity.ok(visitor.get());
         } else {
             return ResponseEntity.notFound().build();
         }
     }
 
     @PostMapping("")
-    public ResponseEntity<Screening> post(@RequestBody Screening screening) {
-        Screening savedScreening = screeningRepository.save(screening);
-        return ResponseEntity.ok(savedScreening);
+    public ResponseEntity<Visitor> post(@RequestBody Visitor visitor) {
+        Visitor savedVisitor = visitorRepository.save(visitor);
+        return ResponseEntity.ok(savedVisitor);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Screening> put(@RequestBody Screening screening, @PathVariable Integer id) {
-        Optional<Screening> oScreening = screeningRepository.findById(id);
-        if (oScreening.isPresent()) {
-            screening.setAuditoriumid(id);
-            return ResponseEntity.ok(screeningRepository.save(screening));
+    public ResponseEntity<Visitor> put(@RequestBody Visitor visitor, @PathVariable Integer id) {
+        Optional<Visitor> oVisitor = visitorRepository.findById(id);
+        if (oVisitor.isPresent()) {
+            visitor.setId(id);
+            return ResponseEntity.ok(visitorRepository.save(visitor));
         } else {
             return ResponseEntity.notFound().build();
         }
@@ -64,9 +64,9 @@ public class ScreeningController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable Integer id) {
-        Optional<Screening> oScreening = screeningRepository.findById(id);
-        if (oScreening.isPresent()) {
-            screeningRepository.deleteById(id);
+        Optional<Visitor> oVisitor = visitorRepository.findById(id);
+        if (oVisitor.isPresent()) {
+            visitorRepository.deleteById(id);
             return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.notFound().build();

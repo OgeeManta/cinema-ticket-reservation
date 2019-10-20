@@ -5,6 +5,7 @@
  */
 package hu.elte.ctr.entities;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,27 +16,28 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+/**
+ *
+ * @author Betűmix
+ */
+
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class Movie {
+public class Reservation implements Serializable{
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
-
-  @Column
-  private String title;
-  
-  @Column
-  private String description;
-  
-  @Column
-  private boolean subtitle;
-  
-  @Column
-  private Integer runtime;
-  
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    
+    @Column
+    private Integer screeningid;
+    
+    @Column
+    private Integer auditoriumid;
+    
+    @Column
+    private Integer reservedseats;
 }

@@ -5,15 +5,11 @@
  */
 package hu.elte.ctr.entities;
 
-import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -29,21 +25,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class Auditorium implements Serializable{
+public class Auditorium{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer Id;
+    private Integer id;
 
     @Column
-    @NotNull
-    private String movieTitle;
+    private String movie;
     
-    @Column(unique = true)
-    @NotNull
-    private Integer dateOfScreening;
-
     @Column
-    @NotNull
-    private Integer screeningAt;
+    private Integer scrdate;
+    
+    @Column
+    private Integer seats;
 }

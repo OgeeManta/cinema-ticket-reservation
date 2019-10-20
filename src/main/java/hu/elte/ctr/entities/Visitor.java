@@ -20,22 +20,25 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class Movie {
+public class Visitor {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
   @Column
-  private String title;
+  private Integer reservationid;
   
   @Column
-  private String description;
+  private String firstname;
   
   @Column
-  private boolean subtitle;
+  private String lastname;
   
   @Column
-  private Integer runtime;
+  private String email;
+  
+  @Column
+  private Integer phone;
   
 }

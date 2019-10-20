@@ -5,7 +5,7 @@
  */
 package hu.elte.ctr.controllers;
 
-import hu.elte.ctr.entities.Screening;
+import hu.elte.ctr.entities.Reservation;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,46 +17,46 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import hu.elte.ctr.repositories.ScreeningRepository;
+import hu.elte.ctr.repositories.ReservationRepository;
 
 /**
  *
  * @author Betűmix
  */
 @RestController
-@RequestMapping("/screenings")
-public class ScreeningController {
+@RequestMapping("/reservations")
+public class ReservationController {
 
     @Autowired
-    private ScreeningRepository screeningRepository;
+    private ReservationRepository reservationRepository;
 
     @GetMapping("")
-    public ResponseEntity<Iterable<Screening>> getAll() {
-        return ResponseEntity.ok(screeningRepository.findAll());
+    public ResponseEntity<Iterable<Reservation>> getAll() {
+        return ResponseEntity.ok(reservationRepository.findAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Screening> get(@PathVariable Integer id) {
-        Optional<Screening> screening = screeningRepository.findById(id);
-        if (screening.isPresent()) {
-            return ResponseEntity.ok(screening.get());
+    public ResponseEntity<Reservation> get(@PathVariable Integer id) {
+        Optional<Reservation> reservation = reservationRepository.findById(id);
+        if (reservation.isPresent()) {
+            return ResponseEntity.ok(reservation.get());
         } else {
             return ResponseEntity.notFound().build();
         }
     }
 
     @PostMapping("")
-    public ResponseEntity<Screening> post(@RequestBody Screening screening) {
-        Screening savedScreening = screeningRepository.save(screening);
-        return ResponseEntity.ok(savedScreening);
+    public ResponseEntity<Reservation> post(@RequestBody Reservation reservation) {
+        Reservation savedReservation = reservationRepository.save(reservation);
+        return ResponseEntity.ok(savedReservation);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Screening> put(@RequestBody Screening screening, @PathVariable Integer id) {
-        Optional<Screening> oScreening = screeningRepository.findById(id);
-        if (oScreening.isPresent()) {
-            screening.setAuditoriumid(id);
-            return ResponseEntity.ok(screeningRepository.save(screening));
+    public ResponseEntity<Reservation> put(@RequestBody Reservation reservation, @PathVariable Integer id) {
+        Optional<Reservation> oReservation = reservationRepository.findById(id);
+        if (oReservation.isPresent()) {
+            reservation.setAuditoriumid(id);
+            return ResponseEntity.ok(reservationRepository.save(reservation));
         } else {
             return ResponseEntity.notFound().build();
         }
@@ -64,9 +64,9 @@ public class ScreeningController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable Integer id) {
-        Optional<Screening> oScreening = screeningRepository.findById(id);
-        if (oScreening.isPresent()) {
-            screeningRepository.deleteById(id);
+        Optional<Reservation> oReservation = reservationRepository.findById(id);
+        if (oReservation.isPresent()) {
+            reservationRepository.deleteById(id);
             return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.notFound().build();

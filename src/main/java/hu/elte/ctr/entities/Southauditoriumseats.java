@@ -20,22 +20,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class Movie {
+public class Southauditoriumseats {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
   @Column
-  private String title;
-  
-  @Column
-  private String description;
-  
-  @Column
-  private boolean subtitle;
-  
-  @Column
-  private Integer runtime;
+  private Integer reservationid;
   
 }
