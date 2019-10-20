@@ -47,8 +47,8 @@ public class ScreeningController {
 
     @PostMapping("")
     public ResponseEntity<Screening> post(@RequestBody Screening screening) {
-        Screening savedMessage = screeningRepository.save(screening);
-        return ResponseEntity.ok(savedMessage);
+        Screening savedScreening = screeningRepository.save(screening);
+        return ResponseEntity.ok(savedScreening);
     }
 
     @PutMapping("/{id}")

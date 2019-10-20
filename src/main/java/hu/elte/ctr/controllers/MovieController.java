@@ -24,7 +24,7 @@ import hu.elte.ctr.repositories.MovieRepository;
  * @author KeresztiKrisztián
  */
 @RestController
-@RequestMapping("movies")
+@RequestMapping("/movies")
 public class MovieController {
   @Autowired
   private MovieRepository movieRepository;
@@ -47,8 +47,8 @@ public class MovieController {
 
   @PostMapping("")
   public ResponseEntity<Movie> post(@RequestBody Movie mov) {
-    Movie newFoo = movieRepository.save(mov);
-    return ResponseEntity.ok(newFoo);
+    Movie newMov = movieRepository.save(mov);
+    return ResponseEntity.ok(newMov);
   }
   
   @DeleteMapping("/{id}")

@@ -5,8 +5,7 @@
  */
 package hu.elte.ctr.entities;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,10 +27,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class Screening {
+public class Screening implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer Id;
+    
+    @Column
     private Integer auditoriumId;
 
     @Column
@@ -40,9 +42,9 @@ public class Screening {
 
     @Column
     @NotNull
-    private LocalDate dateOfScreening;
+    private Integer dateOfScreening;
     
     @Column
     @NotNull
-    private LocalDateTime timeOfScreening;
+    private Integer timeOfScreening;
 }

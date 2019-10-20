@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@RequestMapping("/halls")
+@RequestMapping("/auditoriums")
 public class AuditoriumController {
 
     @Autowired
@@ -56,7 +56,7 @@ public class AuditoriumController {
     public ResponseEntity<Auditorium> put(@RequestBody Auditorium audit, @PathVariable Integer id) {
         Optional<Auditorium> oIssue = auditoriumRepository.findById(id);
         if (oIssue.isPresent()) {
-            audit.setAuditoriumId(id);
+            audit.setId(id);
             return ResponseEntity.ok(auditoriumRepository.save(audit));
         } else {
             return ResponseEntity.notFound().build();
