@@ -119,7 +119,9 @@ Az alkalmazás egy mozi jegyfoglalásának a weben történő működését tesz
 
 ## Implementáció
 ### Fejlesztői környezet bemutatása:
-(most kell)
+- NetBeans IDE 8.2
+- programozási nyelv: Java
+- felhasznált eszközök: Spring Boot, Maven, Git, H2
 
 ### Könyvtárstruktúra:
 (most kell)
