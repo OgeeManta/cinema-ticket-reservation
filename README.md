@@ -92,24 +92,24 @@ Az alkalmazás egy mozi jegyfoglalásának a weben történő működését tesz
 
 #### Végpontok
 
-GET / : főoldal
-GET /login : bejelentkezői felület
-POST /login : bejelentkezési adatok felküldése
-GET /register : regisztrálási felület
-POST /register : regisztrálási adatok felküldése
-GET /movies : az összes film listája
-GET /movies/:id : egy film adatai
-GET /reserve : új foglalás felvétele
-POST /reserve : új foglalás felvétele, adatok küldése
-PUT /admin/reserve/:id : foglalás módósítása
-DELETE /admin/reserve/:id : foglalás törlése
-PUT /admin/movies/:id : film módosítása
-DELETE /admin/movies/:id : film törlése
-POST /admin/movies : film hozzáadása
-PUT /admin/screening/:id : vetítés módosítása
-DELETE /admin/screening/:id : vetítés törlése
-POST /admin/screening : vetítés hozzáadása
-PUT /admin/auditorium/:id : terem módosítása
+- GET / : főoldal
+- GET /login : bejelentkezői felület
+- POST /login : bejelentkezési adatok felküldése
+- GET /register : regisztrálási felület
+- POST /register : regisztrálási adatok felküldése
+- GET /movies : az összes film listája
+- GET /movies/:id : egy film adatai
+- GET /reserve : új foglalás felvétele
+- POST /reserve : új foglalás felvétele, adatok küldése
+- PUT /admin/reserve/:id : foglalás módósítása
+- DELETE /admin/reserve/:id : foglalás törlése
+- PUT /admin/movies/:id : film módosítása
+- DELETE /admin/movies/:id : film törlése
+- POST /admin/movies : film hozzáadása
+- PUT /admin/screening/:id : vetítés módosítása
+- DELETE /admin/screening/:id : vetítés törlése
+- POST /admin/screening : vetítés hozzáadása
+- PUT /admin/auditorium/:id : terem módosítása
 
 ### Felhasználói felület-modell
 #### Kezdőlap:
