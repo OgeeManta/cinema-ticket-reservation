@@ -136,7 +136,10 @@ Az alkalmazás egy mozi jegyfoglalásának a weben történő működését tesz
 - felhasznált eszközök: Spring Boot, Maven, Git, H2
 
 ### Könyvtárstruktúra:
-(most kell)
+-cinema-ticket-reservation: 
+	- README fájl, felületi tervek, adatbázisterv
+	- /src/main/...: az adatbázis felépítéséhez szükséges osztályok, melyek tartalmazzák a táblák közötti kapcsolatokat, ill. az endpoint-ok működtetését is.
+	- /src/resources: az sql import és az alkalmazás tulajdonságait tartalmazó fájl van benne. 
 
 ## Felhasználói dokumentáció
 (később)
