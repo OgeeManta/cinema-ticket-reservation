@@ -48,7 +48,10 @@ Az alkalmazás egy mozi jegyfoglalásának a weben történő működését tesz
 	- Ha még az adatbázisban nem szereplő e-mail címmel szeretnénk regszisztrálni, de a jelszó, valamint a jelszó megerősítés mezőben nem ugyanaz a szöveg szerepel, akkor hibaüzenetet kapunk, hogy nem sikerült a jelszó megerősítése.
 	
 ##### Admin:
-(még kell)
+- Módosíthatja a filmek adatait, hozzáadhat új filmet, törölhet filmet.
+- Módosíthatja a termek adatait.
+- Törölhet foglalást.
+- A vetítések adatait módosíthatja, hozzáadhat újat, törölhet.
 
 ### Nem funkcionális követelmények:
 **termék követelmények:**
@@ -101,18 +104,10 @@ Az alkalmazás egy mozi jegyfoglalásának a weben történő működését tesz
 ![Foglalás](https://github.com/OgeeManta/cinema-ticket-reservation/blob/master/Foglal%C3%A1s.png?raw=true)
 
 ### Osztálymodell
-#### Adatmodell:
-(most kell)
 
 #### Adatbázisterv
-5 tábla
-  - Movie : id(int),title(string),duration(time),description(string),subtitle(bool)
-  - Auditorium : id(int),name(string),seats(int,int)
-  - Screening : id(int),movie_id(int),auditorium_id(int),screening_start(time)
-  - Reservation : id(int),screening_id(int),reserved_auditorium(int), reserved_seats(int,int)
-  - Visitor : id(int),reservation_id(int),name(string),phone_number(int),email(string)
   
-(kell diagram is!)
+(UML!)
 
 #### Állapotdiagram:
 (később)
