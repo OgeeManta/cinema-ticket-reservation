@@ -124,8 +124,7 @@ Az alkalmazás egy mozi jegyfoglalásának a weben történő működését tesz
 ### Osztálymodell
 
 #### Adatbázisterv
-  
-(UML!)
+![Adatbázisterv](https://github.com/OgeeManta/cinema-ticket-reservation/blob/master/DB_UML.jpg?raw=true)
 
 #### Állapotdiagram:
 (később)
