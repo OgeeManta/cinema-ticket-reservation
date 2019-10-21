@@ -6,6 +6,9 @@
 package hu.elte.ctr.controllers;
 
 import hu.elte.ctr.entities.Screening;
+import hu.elte.ctr.repositories.AuditoriumRepository;
+import hu.elte.ctr.repositories.MovieRepository;
+import hu.elte.ctr.repositories.ReservationRepository;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +32,15 @@ public class ScreeningController {
 
     @Autowired
     private ScreeningRepository screeningRepository;
+    
+    @Autowired
+    private MovieRepository movieRepository;
+    
+    @Autowired
+    private ReservationRepository reservationRepository;
+    
+    @Autowired
+    private AuditoriumRepository auditoriumRepository;
 
     @GetMapping("")
     public ResponseEntity<Iterable<Screening>> getAll() {
@@ -55,7 +67,7 @@ public class ScreeningController {
     public ResponseEntity<Screening> put(@RequestBody Screening screening, @PathVariable Integer id) {
         Optional<Screening> oScreening = screeningRepository.findById(id);
         if (oScreening.isPresent()) {
-            screening.setAuditoriumid(id);
+            screening.setId(id);
             return ResponseEntity.ok(screeningRepository.save(screening));
         } else {
             return ResponseEntity.notFound().build();
@@ -67,6 +79,7 @@ public class ScreeningController {
         Optional<Screening> oScreening = screeningRepository.findById(id);
         if (oScreening.isPresent()) {
             screeningRepository.deleteById(id);
+            
             return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.notFound().build();

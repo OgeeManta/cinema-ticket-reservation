@@ -7,6 +7,7 @@ package hu.elte.ctr.controllers;
 
 import hu.elte.ctr.entities.Auditorium;
 import hu.elte.ctr.repositories.AuditoriumRepository;
+import hu.elte.ctr.repositories.ScreeningRepository;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -41,34 +42,6 @@ public class AuditoriumController {
         Optional<Auditorium> audit = auditoriumRepository.findById(id);
         if (audit.isPresent()) {
             return ResponseEntity.ok(audit.get());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    @PostMapping("")
-    public ResponseEntity<Auditorium> post(@RequestBody Auditorium audit) {
-        Auditorium savedIssue = auditoriumRepository.save(audit);
-        return ResponseEntity.ok(savedIssue);
-    }
-    
-    @PutMapping("/{id}")
-    public ResponseEntity<Auditorium> put(@RequestBody Auditorium audit, @PathVariable Integer id) {
-        Optional<Auditorium> oIssue = auditoriumRepository.findById(id);
-        if (oIssue.isPresent()) {
-            audit.setId(id);
-            return ResponseEntity.ok(auditoriumRepository.save(audit));
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity delete(@PathVariable Integer id) {
-        Optional<Auditorium> oIssue = auditoriumRepository.findById(id);
-        if (oIssue.isPresent()) {
-            auditoriumRepository.deleteById(id);
-            return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.notFound().build();
         }

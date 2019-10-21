@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import hu.elte.ctr.repositories.MovieRepository;
+import hu.elte.ctr.repositories.ScreeningRepository;
 
 /**
  *
@@ -26,9 +27,10 @@ import hu.elte.ctr.repositories.MovieRepository;
 @RestController
 @RequestMapping("/movies")
 public class MovieController {
+    
   @Autowired
   private MovieRepository movieRepository;
-
+  
   @GetMapping("")
   public ResponseEntity<Iterable<Movie>> getAll() {
     return ResponseEntity.ok(movieRepository.findAll());

@@ -5,28 +5,42 @@
  */
 package hu.elte.ctr.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+
+/**
+ *
+ * @author Betűmix
+ */
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class Northauditoriumseats {
+public class Category{
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-  @Column
-  private Integer reservationid;
-  
+    @Column
+    private String text;
+    
+    @ManyToMany(mappedBy = "categories")
+    @JsonIgnore
+    private List<Movie> movies;
+    
+    
 }

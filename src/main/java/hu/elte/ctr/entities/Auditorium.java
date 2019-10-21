@@ -5,11 +5,13 @@
  */
 package hu.elte.ctr.entities;
 
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -31,12 +33,12 @@ public class Auditorium{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column
-    private String movie;
-    
-    @Column
-    private Integer scrdate;
+    @Column (unique = true)
+    private String auditoriumname;
     
     @Column
     private Integer seats;
+    
+    @OneToOne(mappedBy = "auditorium")
+    private Screening screening;
 }

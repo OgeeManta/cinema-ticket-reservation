@@ -51,17 +51,6 @@ public class ReservationController {
         return ResponseEntity.ok(savedReservation);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Reservation> put(@RequestBody Reservation reservation, @PathVariable Integer id) {
-        Optional<Reservation> oReservation = reservationRepository.findById(id);
-        if (oReservation.isPresent()) {
-            reservation.setAuditoriumid(id);
-            return ResponseEntity.ok(reservationRepository.save(reservation));
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable Integer id) {
         Optional<Reservation> oReservation = reservationRepository.findById(id);

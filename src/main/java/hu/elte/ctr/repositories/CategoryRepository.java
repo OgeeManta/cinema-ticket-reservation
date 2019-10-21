@@ -5,7 +5,7 @@
  */
 package hu.elte.ctr.repositories;
 
-import hu.elte.ctr.entities.Northauditoriumseats;
+import hu.elte.ctr.entities.Category;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,7 +13,8 @@ import org.springframework.stereotype.Repository;
  *
  * @author Betűmix
  */
+
 @Repository
-public interface NorthauditoriumseatsRepository extends CrudRepository<Northauditoriumseats, Integer> {
-    
+public interface CategoryRepository extends CrudRepository<Category, Integer> {
+
 }

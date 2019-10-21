@@ -5,12 +5,19 @@
  */
 package hu.elte.ctr.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -33,11 +40,29 @@ public class Reservation implements Serializable{
     private Integer id;
     
     @Column
-    private Integer screeningid;
+    private Integer normalseats;
     
     @Column
-    private Integer auditoriumid;
+    private Integer studentseats;
     
     @Column
-    private Integer reservedseats;
+    private Integer price;
+    
+    @Column
+    private Integer fromseat;
+    
+    @Column
+    private String firstname;
+    
+    @Column
+    private String lastname;
+    
+    @Column
+    private String phone;
+    
+    @ManyToOne
+    @JoinColumn
+    @JsonIgnore
+    private Screening screening;
+    
 }
