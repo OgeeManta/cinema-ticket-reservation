@@ -28,7 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
           .csrf().disable()
           .authorizeRequests()
               .antMatchers("/h2/**", "/users/register").permitAll()   // important!
-              .anyRequest().authenticated()
+              //.antMatchers("/auditoriums/**").hasRole("ADMIN")
               .and()
           .httpBasic()
               .authenticationEntryPoint(getBasicAuthEntryPoint())
