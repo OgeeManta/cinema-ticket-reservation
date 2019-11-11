@@ -5,12 +5,16 @@
  */
 package hu.elte.ctr.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -39,6 +43,6 @@ public class Auditorium{
     @Column
     private Integer seats;
     
-    @OneToOne(mappedBy = "auditorium")
-    private Screening screening;
+    @OneToMany(mappedBy = "auditorium")
+    private List<Screening> screening;
 }
