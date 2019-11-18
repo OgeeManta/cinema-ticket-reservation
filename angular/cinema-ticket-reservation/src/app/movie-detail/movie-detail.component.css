@@ -1,0 +1,32 @@
+h1 {
+    background-color: lightsalmon;
+}
+dl {
+    background-color: lightsalmon;
+}
+div {
+    background-color: lightsalmon;
+}
+.back{
+    margin-right: 10px;
+}
+
+.reserve{
+    float: inline-end;
+}
+
+.clearfix{
+    clear:both;
+}
+.content {
+    width:42%;
+    float: left;
+}
+.poster{
+    width:55%;
+    margin-right:2%;
+    float: left;
+}
+.poster img{
+   width:100%;
+}

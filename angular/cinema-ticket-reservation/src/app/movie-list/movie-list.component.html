@@ -1,16 +1,15 @@
+<div>
 <div class="row">
     <div class="col">
-      <h1 class="display-2">Movies</h1>
+      <h1 class="display-2" style="text-align: center;">Movies</h1>
       <table class="table">
         <tbody>
-          <td *ngFor="let movie of movies" >
-            <tr><b>{{ movie.title }}</b></tr>
-            <tr> " KÉP "</tr>
-            <tr>{{ movie.description }}</tr>
-            <tr>{{ movie.runtime }}</tr>
-            <tr> LINK </tr>
+          <td *ngFor="let movie of movies" (click)="onSelectMovie(movie)" [class.table-info]="movie === selectedMovie">
+            <tr><a [routerLink]="['/movies', movie.id]"><b>{{ movie.title }}</b></a></tr>
+            <tr><img src = {{movie.image}} style = "width: 200px;height: 300px;"></tr>
           </td>
         </tbody>
       </table>
     </div>
   </div>
+</div>

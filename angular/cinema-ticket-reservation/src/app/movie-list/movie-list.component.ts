@@ -8,7 +8,10 @@ import { MovieService } from '../movie.service';
   styleUrls: ['./movie-list.component.css']
 })
 export class MovieListComponent implements OnInit {
-  movies: Movie[];
+
+  public selectedMovie: Movie;
+
+  private movies: Movie[] = [];
 
   constructor(
     private movieService: MovieService
@@ -17,6 +20,14 @@ export class MovieListComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  onSelectMovie(movie: Movie): void {
+    this.selectedMovie = movie;
+  }
+
+  onNewClick(): void {
+    this.selectedMovie = new Movie();
   }
 
 }

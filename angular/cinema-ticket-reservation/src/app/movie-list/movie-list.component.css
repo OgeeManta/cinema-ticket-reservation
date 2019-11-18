@@ -1,0 +1,22 @@
+div {
+    background-color: lightsalmon;
+}
+tbody {
+    background-color :lightcoral;
+}
+tr {
+    align-items: center;
+    align-self: center;
+    align-self: center;
+    text-align: center;
+    text-align-last: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+td {
+    align-items: center;
+    align-self: center;
+    align-self: center;
+    text-align: center;
+    text-align-last: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}

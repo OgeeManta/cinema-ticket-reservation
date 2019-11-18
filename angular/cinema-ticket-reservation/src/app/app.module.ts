@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RoutingModule } from './routing/routing.module';
 
 import { AppComponent } from './app.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
@@ -22,7 +23,8 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
     MatButtonModule,
     MatMenuModule,
     BrowserAnimationsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    RoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

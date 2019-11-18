@@ -1,1 +1,24 @@
-<p>movie-detail works!</p>
+
+
+<div class="poster">
+    <h1 class="display-2">{{ movie.title }}</h1>
+    <img src = {{movie.image}} style="width: 400px;height: 300;float: left;margin-right:2%;">
+    <dl class="row">
+
+        <dt class="col-sm-3">Runtime</dt>
+        <dd class="col-sm-9">{{ movie.runtime }} minutes</dd>
+        
+        <dt class="col-sm-3">Description</dt>
+        <dd class="col-sm-9">{{ movie.description }}</dd>
+        <p class="back">
+            <button mat-raised-button routerLink="/movies">Back</button>
+        </p>
+        <p class="back">
+            Discounted: <input type="number" style="width: 35px;"> Full price: <input type="number" style="width: 35px;">
+        </p>
+        <p class="reserve">
+            <button mat-raised-button routerLink="/reservation">Reserve tickets</button>
+        </p>
+    </dl>
+</div>
+
