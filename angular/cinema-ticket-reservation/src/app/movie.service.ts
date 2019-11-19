@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { Movie } from "./movie";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-//import * as myImage from 'C:/Users/betum/Desktop/git/ctr/angular/cinema-ticket-reservation/lionKing.jpg';
-
 const httpOptions = {
   headers: new HttpHeaders({ 
     'Content-Type': 'application/json'
