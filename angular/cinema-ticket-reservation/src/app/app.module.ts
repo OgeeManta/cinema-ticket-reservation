@@ -8,6 +8,7 @@ import { MatToolbarModule, MatButtonToggleModule, MatIconModule, MatButtonModule
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
     BrowserAnimationsModule,
     FlexLayoutModule,
     RoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

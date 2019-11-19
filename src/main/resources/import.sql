@@ -15,9 +15,9 @@ insert into Category (text) values ('Adventure');
 insert into Category (text) values ('Sci-fi');
 
 
-insert into Movie (title, description, runtime) values ('Lion King', 'It is a very good movie', 110);
-insert into Movie (title, description, runtime) values ('The Action Movie', 'It is even a better movie', 123);
-insert into Movie (title, description, runtime) values ('Unknown Movie', 'This movie is not being aired', 0);
+insert into Movie (image, title, description, runtime) values ('assets/lionKing.jpg', 'Lion King', 'A Lion cub crown prince is tricked by a treacherous uncle into thinking he caused his father''s death and flees into exile in despair, only to learn in adulthood his identity and his responsibilities.', 110);
+insert into Movie (image, title, description, runtime) values ('assets/lionKing2.jpg', 'Lion King 2', 'Simba''s daughter is the key to a resolution of a bitter feud between Simba''s pride and the outcast pride led by the mate of Scar.', 81);
+insert into Movie (image, title, description, runtime) values ('assets/holyGrail.jpg', 'Monty Python and the Holy Grail', 'King Arthur and his Knights of the Round Table embark on a surreal, low-budget search for the Holy Grail, encountering many, very silly obstacles.', 91);
 
 insert into Screening (movie_id, auditorium_id, dateofscreening) values (1,1,'2019-01-01 12:30:00');
 insert into Screening (movie_id, auditorium_id, dateofscreening) values (2,1,'2019-01-01 15:00:00');

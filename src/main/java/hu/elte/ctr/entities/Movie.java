@@ -33,6 +33,9 @@ public class Movie {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
+  
+  @Column
+  private String image;
 
   @Column
   private String title;

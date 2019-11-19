@@ -19,11 +19,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import hu.elte.ctr.repositories.MovieRepository;
 import hu.elte.ctr.repositories.ScreeningRepository;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 /**
  *
  * @author KeresztiKrisztián
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/movies")
 public class MovieController {
