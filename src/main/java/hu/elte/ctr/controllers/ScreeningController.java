@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import hu.elte.ctr.repositories.ScreeningRepository;
+import org.springframework.security.access.annotation.Secured;
 
 /**
  *
@@ -57,13 +58,15 @@ public class ScreeningController {
         }
     }
 
-    @PostMapping("")
+    @PostMapping("/admin")
+    @Secured({ "ROLE_ADMIN" })
     public ResponseEntity<Screening> post(@RequestBody Screening screening) {
         Screening savedScreening = screeningRepository.save(screening);
         return ResponseEntity.ok(savedScreening);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/admin/{id}")
+    @Secured({ "ROLE_ADMIN" })
     public ResponseEntity<Screening> put(@RequestBody Screening screening, @PathVariable Integer id) {
         Optional<Screening> oScreening = screeningRepository.findById(id);
         if (oScreening.isPresent()) {
@@ -74,12 +77,12 @@ public class ScreeningController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/admin/{id}")
+    @Secured({ "ROLE_ADMIN" })
     public ResponseEntity delete(@PathVariable Integer id) {
         Optional<Screening> oScreening = screeningRepository.findById(id);
         if (oScreening.isPresent()) {
             screeningRepository.deleteById(id);
-            
             return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.notFound().build();

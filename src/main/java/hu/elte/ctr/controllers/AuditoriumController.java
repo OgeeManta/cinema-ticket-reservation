@@ -39,13 +39,20 @@ public class AuditoriumController {
         return ResponseEntity.ok(auditoriumRepository.findAll());
     }
 
-    @GetMapping("/admin")
+    @PutMapping("/admin/{id}")
     @Secured({ "ROLE_ADMIN" })
-    public ResponseEntity<Iterable<Auditorium>> getAll_admin() {
-        return ResponseEntity.ok(auditoriumRepository.findAll());
+    public ResponseEntity<Auditorium> put(@PathVariable Integer id, @RequestBody Auditorium aud) {
+    Optional<Auditorium> oldAud = auditoriumRepository.findById(id);
+    if (!oldAud.isPresent())
+    {
+      ResponseEntity.notFound();
     }
+    aud.setId(id);
+    return ResponseEntity.ok(auditoriumRepository.save(aud));
+  }
     
     @GetMapping("/{id}")
+    @Secured({ "ROLE_USER", "ROLE_ADMIN" })
     public ResponseEntity<Auditorium> get(@PathVariable Integer id) {
         Optional<Auditorium> audit = auditoriumRepository.findById(id);
         if (audit.isPresent()) {

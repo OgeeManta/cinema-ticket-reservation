@@ -30,4 +30,6 @@ export class MovieListComponent implements OnInit {
     this.selectedMovie = new Movie();
   }
 
+  
+
 }

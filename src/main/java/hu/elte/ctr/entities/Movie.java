@@ -36,6 +36,9 @@ public class Movie {
   
   @Column
   private String image;
+  
+  @Column
+  private String trailer;
 
   @Column
   private String title;

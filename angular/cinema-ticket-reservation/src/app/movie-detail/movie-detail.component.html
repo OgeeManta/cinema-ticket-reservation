@@ -11,7 +11,7 @@
         <dt class="col-sm-3">Description</dt>
         <dd class="col-sm-9">{{ movie.description }}</dd>
 
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/4sj1MT05lAA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="460" height="215" [src]="updateVideoUrl(movie.trailer)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <p class="back">
             <button mat-raised-button routerLink="/movies">Back</button>
         </p>

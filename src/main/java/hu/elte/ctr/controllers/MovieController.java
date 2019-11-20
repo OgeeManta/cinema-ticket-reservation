@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import hu.elte.ctr.repositories.MovieRepository;
 import hu.elte.ctr.repositories.ScreeningRepository;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 /**
@@ -49,33 +50,33 @@ public class MovieController {
     return ResponseEntity.ok(mov.get());
   }
 
-  @PostMapping("")
+  @PostMapping("/admin")
+  @Secured({ "ROLE_ADMIN" })
   public ResponseEntity<Movie> post(@RequestBody Movie mov) {
     Movie newMov = movieRepository.save(mov);
     return ResponseEntity.ok(newMov);
   }
   
-  @DeleteMapping("/{id}")
+  @DeleteMapping("/admin/{id}")
+  @Secured({ "ROLE_ADMIN" })
   public ResponseEntity delete(@PathVariable Integer id) {
     Optional<Movie> mov = movieRepository.findById(id);
     if (!mov.isPresent())
     {
       ResponseEntity.notFound();
     }
-    
     movieRepository.delete(mov.get());
-    
     return ResponseEntity.ok().build();
   }
 
-  @PutMapping("/{id}")
+  @PutMapping("/admin/{id}")
+  @Secured({ "ROLE_ADMIN" })
   public ResponseEntity<Movie> put(@PathVariable Integer id, @RequestBody Movie mov) {
     Optional<Movie> oldMov = movieRepository.findById(id);
     if (!oldMov.isPresent())
     {
       ResponseEntity.notFound();
     }
-
     mov.setId(id);
     return ResponseEntity.ok(movieRepository.save(mov));
   }

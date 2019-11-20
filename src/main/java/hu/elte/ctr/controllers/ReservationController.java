@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import hu.elte.ctr.repositories.ReservationRepository;
+import org.springframework.security.access.annotation.Secured;
 
 /**
  *
@@ -31,11 +32,13 @@ public class ReservationController {
     private ReservationRepository reservationRepository;
 
     @GetMapping("")
+    @Secured({ "ROLE_USER", "ROLE_ADMIN" })
     public ResponseEntity<Iterable<Reservation>> getAll() {
         return ResponseEntity.ok(reservationRepository.findAll());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/admin/{id}")
+    @Secured({"ROLE_ADMIN" })
     public ResponseEntity<Reservation> get(@PathVariable Integer id) {
         Optional<Reservation> reservation = reservationRepository.findById(id);
         if (reservation.isPresent()) {
@@ -45,13 +48,15 @@ public class ReservationController {
         }
     }
 
-    @PostMapping("")
+    @PostMapping("/admin")
+    @Secured({ "ROLE_ADMIN" })
     public ResponseEntity<Reservation> post(@RequestBody Reservation reservation) {
         Reservation savedReservation = reservationRepository.save(reservation);
         return ResponseEntity.ok(savedReservation);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/admin/{id}")
+    @Secured({ "ROLE_ADMIN" })
     public ResponseEntity delete(@PathVariable Integer id) {
         Optional<Reservation> oReservation = reservationRepository.findById(id);
         if (oReservation.isPresent()) {

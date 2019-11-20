@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Movie } from "./movie";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { DomSanitizer } from '@angular/platform-browser';
 
 //import * as myImage from 'C:/Users/betum/Desktop/git/ctr/angular/cinema-ticket-reservation/lionKing.jpg';
 
@@ -18,7 +19,7 @@ export class MovieService {
   private movieUrl = 'http://localhost:8080/movies';
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
   ) { }
 
 getMovies(): Promise<Movie[]> {
