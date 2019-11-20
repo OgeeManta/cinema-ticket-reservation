@@ -18,6 +18,10 @@ export class MovieListComponent implements OnInit {
   ) { 
   }
 
+  getSelectedMovie() : Movie{
+    return this.selectedMovie;
+  }
+
   async ngOnInit() : Promise<void>{
     this.movies = await this.movieService.getMovies();
   }

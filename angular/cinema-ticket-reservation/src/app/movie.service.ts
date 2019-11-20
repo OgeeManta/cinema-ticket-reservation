@@ -3,8 +3,6 @@ import { Movie } from "./movie";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 
-//import * as myImage from 'C:/Users/betum/Desktop/git/ctr/angular/cinema-ticket-reservation/lionKing.jpg';
-
 const httpOptions = {
   headers: new HttpHeaders({ 
     'Content-Type': 'application/json'
