@@ -1,6 +1,7 @@
-<body>
-    <dl>
-        <button mat-button routerLink="/movies">Movies</button>
-    </dl>
-    <router-outlet></router-outlet>
-</body>
+<nav>
+    <ul>
+        <li><a [routerLink]="['/movies']">Movies</a></li>
+        <li id="login"><a [routerLink]="['/movies']">Login</a></li>
+    </ul>
+</nav>
+<router-outlet></router-outlet>

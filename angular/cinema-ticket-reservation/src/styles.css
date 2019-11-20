@@ -1,6 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
-@import "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css";
+html {
+	background-image: url("cinema.jpg");
+	background-attachment: scroll;
+	background-position: center center;
+    background-size: cover;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+    background-color: rgb(0,0,0,0.8);
+	margin: auto;
+	text-align: justify;	
+	/*border-radius: 10px 10px 10px 10px;*/
+	box-shadow: 0px 0px 10px #F7F7F7;	
+	width: 90%;
+  }
+
+a:hover{
+    color:  rgb(199, 6, 6);
+}

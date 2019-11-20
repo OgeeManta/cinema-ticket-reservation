@@ -1,26 +1,18 @@
 
-
-<div class="poster">
-    <h1 class="display-2">{{ movie.title }}</h1>
-    <img src = {{movie.image}} style="width: 400px;height: 300;float: left;margin-right:2%;">
-    <dl class="row">
-
-        <dt class="col-sm-3">Runtime</dt>
-        <dd class="col-sm-9">{{ movie.runtime }} minutes</dd>
-        
-        <dt class="col-sm-3">Description</dt>
-        <dd class="col-sm-9">{{ movie.description }}</dd>
-
-        <iframe width="460" height="215" [src]="updateVideoUrl(movie.trailer)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <p class="back">
-            <button mat-raised-button routerLink="/movies">Back</button>
-        </p>
-        <p class="back">
-            Discounted: <input type="number" style="width: 35px;"> Full price: <input type="number" style="width: 35px;">
-        </p>
-        <p class="reserve">
-            <button mat-raised-button routerLink="/reservation">Reserve tickets</button>
-        </p>
-    </dl>
-</div>
+<html>
+<body>
+    <h1 class="title">{{ movie.title }}</h1>
+    <img src = {{movie.image}}>
+    <table>
+        <tr><th>Runtime</th><td>{{ movie.runtime }} minutes</td><td rowspan="2"><iframe id="trailer" width="360" height="220" [src]="updateVideoUrl(movie.trailer)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td></tr>
+        <tr><th>Description</th><td>{{ movie.description }}</td></tr>  
+    </table>
+    <div>
+        Discounted: <input type="number"> Full price: <input type="number">
+    </div>
+    <div class="reserve">
+        <button mat-raised-button routerLink="/reservation">Reserve tickets</button>
+    </div>
+</body>
+</html>
 
