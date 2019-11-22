@@ -19,11 +19,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import hu.elte.ctr.repositories.ReservationRepository;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 /**
  *
  * @author Betűmix
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/reservations")
 public class ReservationController {
@@ -36,6 +38,12 @@ public class ReservationController {
     public ResponseEntity<Iterable<Reservation>> getAll() {
         return ResponseEntity.ok(reservationRepository.findAll());
     }
+    
+    @PostMapping("")
+    public ResponseEntity<Reservation> post(@RequestBody Reservation reservation) {
+        Reservation savedReservation = reservationRepository.save(reservation);
+        return ResponseEntity.ok(savedReservation);
+    }
 
     @GetMapping("/admin/{id}")
     @Secured({"ROLE_ADMIN" })
@@ -47,14 +55,14 @@ public class ReservationController {
             return ResponseEntity.notFound().build();
         }
     }
-
+/*
     @PostMapping("/admin")
     @Secured({ "ROLE_ADMIN" })
     public ResponseEntity<Reservation> post(@RequestBody Reservation reservation) {
         Reservation savedReservation = reservationRepository.save(reservation);
         return ResponseEntity.ok(savedReservation);
     }
-
+*/
     @DeleteMapping("/admin/{id}")
     @Secured({ "ROLE_ADMIN" })
     public ResponseEntity delete(@PathVariable Integer id) {

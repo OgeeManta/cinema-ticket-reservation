@@ -4,6 +4,7 @@ import { ReservationService } from '../reservation.service';
 
 import { Component, OnChanges, Input, Output, EventEmitter  } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { MovieListComponent } from '../movie-list/movie-list.component';
 
 @Component({
   selector: 'reservation',
@@ -12,39 +13,34 @@ import { NgForm } from '@angular/forms';
 })
 export class ReservationComponent implements OnChanges {
 
-  private newReservation: Reservation;
   private reservations: Reservation[];
 
-  @Input() reservation: Reservation
-  public model: Reservation
+  @Input() reservation : Reservation;
+  public model : Reservation = <Reservation> {};
   @Output() onSubmit = new EventEmitter<Reservation>();
 
   constructor(
-    private reservationService: ReservationService
+    private reservationService: ReservationService,
+    //private movieListComponent: MovieListComponent    itt NULL_INJECTION hiba
   ) { }
 
+    async ngOnInit(): Promise<void> {
+  }
+
   async ngOnChanges(): Promise<void> {
-    this.model = Object.assign({}, this.newReservation);
+    this.model = Object.assign({}, this.reservation);
   }
-/*
-  onFormSubmit(reservation: Reservation): void {
 
-      this.newReservation.firstname = reservation.firstname;
-      this.newReservation.lastname = reservation.lastname;
-      this.newReservation.phone = 'reservation.phone';
-      this.newReservation.normalseats = reservation.normalseats;
-      this.newReservation.studentseats = reservation.studentseats;
-      this.newReservation.fromseat = reservation.fromseat;
-      this.newReservation.price = reservation.price;
-      this.reservationService.createReservation(reservation)
-      .then(createdReservation => {
-          this.reservations.push(createdReservation);
-        });
-    this.newReservation = null;
-  }
-  */
-
-  submit(form: NgForm): void {
+  async submit(form: NgForm): Promise<void> {
+    //console.log(this.movieListComponent.getStaticSelectedMovie().title)
+    this.model.firstname = form.value.firstname;
+    this.model.lastname = form.value.firstname;
+    this.model.normalseats = 0;
+    this.model.studentseats = 0;
+    this.model.price = 0;
+    this.model.fromseat = 0;
+    this.model.phone = form.value.phone;
+    this.reservationService.createReservation(this.model);
     if (!form.valid) {
       return;
     }

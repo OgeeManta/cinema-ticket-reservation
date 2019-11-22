@@ -9,7 +9,8 @@ import { MovieService } from '../movie.service';
 })
 export class MovieListComponent implements OnInit {
 
-  public selectedMovie: Movie;
+  public static selectedMovie: Movie;
+  public selectedMovie: Movie
 
   private movies: Movie[] = [];
 
@@ -27,11 +28,12 @@ export class MovieListComponent implements OnInit {
   }
 
   onSelectMovie(movie: Movie): void {
+    MovieListComponent.selectedMovie = movie;
     this.selectedMovie = movie;
   }
 
-  onNewClick(): void {
-    this.selectedMovie = new Movie();
+  getStaticSelectedMovie(){
+    return MovieListComponent.selectedMovie;
   }
 
   

@@ -1,24 +1,44 @@
-<form (submit)="submit(reservationForm)" #reservationForm="ngForm">
+<form #reservationForm="ngForm" (ngSubmit)="submit(reservationForm)">
+<div class="form-group">
+  <p>
+    Discounted Tickets:
+  </p>
+</div>
+<div class="form-group">
   <mat-form-field>
     <label for="firstname">Enter First Name</label>
     <input matInput
       type="text"
       name="firstname"
-      aria-describedby="firstnameHelp"
-      required>
+      [(ngModel)]="firstname">
   </mat-form-field>
+  <mat-error *ngIf="firstname.invalid && (firstname.dirty || firstname.touched) && firstname.errors.required">
+    Name is required!
+  </mat-error>
+</div>
   <br>
   <mat-form-field>
     <label for="lastname">Enter Last Name</label>
     <input matInput
       type="text"
       name="lastname"
-      aria-describedby="lastnameHelp"
-      required>
+      [(ngModel)]="lastname">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <label for="phone">Enter Phone Number</label>
+    <input matInput
+      type="text"
+      name="phone"
+      [(ngModel)]="phone">
   </mat-form-field>
   <br>
   <button mat-raised-button
-    type="submit">
+    [disabled]="!reservationForm.valid"
+    type="submit"
+    color="primary">
     Book Reservation
   </button>
 </form>
+
+Angular Generated Form Model: {{reservationForm.value | json}}

@@ -24,6 +24,10 @@ export class MovieDetailComponent implements OnInit {
     this.movie = await this.movieService.getMovie(id);  
   }
 
+  public getMovieForReservation(){
+    return this.movie;
+  }
+
   updateVideoUrl(id: string):  SafeResourceUrl{
     const dangerousVideoUrl = 'https://www.youtube.com/embed/' + id;
     return this.sanitizer.bypassSecurityTrustResourceUrl(dangerousVideoUrl);
