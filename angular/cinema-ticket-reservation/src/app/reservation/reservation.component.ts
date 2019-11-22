@@ -34,7 +34,7 @@ export class ReservationComponent implements OnChanges {
   async submit(form: NgForm): Promise<void> {
     //console.log(this.movieListComponent.getStaticSelectedMovie().title)
     this.model.firstname = form.value.firstname;
-    this.model.lastname = form.value.firstname;
+    this.model.lastname = form.value.lastname;
     this.model.normalseats = 0;
     this.model.studentseats = 0;
     this.model.price = 0;
