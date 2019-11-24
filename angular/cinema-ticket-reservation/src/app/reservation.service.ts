@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Reservation } from "./reservation";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, Subject, BehaviorSubject } from 'rxjs';
+import { Movie } from './movie';
 
 const httpOptions = {
   headers: new HttpHeaders({ 
@@ -15,9 +17,23 @@ export class ReservationService {
 
   private reservationUrl = 'http://localhost:8080/reservations';
 
+  private discountedSource = new BehaviorSubject(0);
+  currentDiscounted = this.discountedSource.asObservable();
+
+  private fullSource = new BehaviorSubject(0);
+  currentFull = this.fullSource.asObservable();
+
   constructor(
     private http: HttpClient
   ) { }
+
+  changeDiscounted(discounted: number){
+    this.discountedSource.next(discounted);
+  }
+
+  changeFull(full: number){
+    this.fullSource.next(full);
+  }
 
 getReservations(): Promise<Reservation[]> {
     return this.http.get<Reservation[]>(`${this.reservationUrl}`, httpOptions).toPromise();

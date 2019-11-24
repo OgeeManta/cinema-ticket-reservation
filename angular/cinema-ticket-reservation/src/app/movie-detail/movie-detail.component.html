@@ -8,10 +8,10 @@
         <tr><th>Description</th><td>{{ movie.description }}</td></tr>  
     </table>
     <div>
-        Discounted: <input type="number"> Full price: <input type="number">
+        Discounted: <input #discounted type="number"> Full price: <input #full type="number">
     </div>
     <div class="reserve">
-        <button mat-raised-button routerLink="/reservation">Reserve tickets</button>
+        <button (click)="setDiscountedAndFull(discounted.value,full.value)" mat-raised-button [routerLink]="['/reservation', movie.id]">Reserve tickets</button>
     </div>
 </body>
 </html>

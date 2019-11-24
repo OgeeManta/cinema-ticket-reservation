@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Movie } from '../movie';
 import { ActivatedRoute } from '@angular/router';
 import { MovieService } from '../movie.service';
+import { ReservationService } from '../reservation.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
@@ -13,19 +14,31 @@ export class MovieDetailComponent implements OnInit {
   
   public movie: Movie = null;
 
+  public discounted: number;
+  public full: number;
+
+
   constructor(
     private route: ActivatedRoute,
     private movieService: MovieService,
-    private sanitizer: DomSanitizer
-  ) {   }
+    private sanitizer: DomSanitizer,
+    private reservationService: ReservationService,
+  ) {  }
   
   async ngOnInit(): Promise<void> {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.movie = await this.movieService.getMovie(id);  
+    this.movie = await this.movieService.getMovie(id);
+
+    this.reservationService.currentDiscounted.subscribe(discounted => this.discounted = discounted);
+    this.reservationService.currentFull.subscribe(full => this.full = full);
+
   }
 
-  public getMovieForReservation(){
-    return this.movie;
+  setDiscountedAndFull(dc: number,full: number) {
+    this.discounted = dc;
+    this.full = full;
+    this.reservationService.changeDiscounted(this.discounted);
+    this.reservationService.changeFull(this.full)
   }
 
   updateVideoUrl(id: string):  SafeResourceUrl{

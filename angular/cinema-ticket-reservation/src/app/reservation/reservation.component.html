@@ -1,37 +1,78 @@
+
+<html>
+<div>
+    <p>
+        Discounted Tickets: {{discounted}}
+      </p>
+      <p>
+        Full Price Tickets: {{full}}
+      </p>
+      <p>
+        Overall price: {{price}}
+      </p>
+</div>
+
 <form #reservationForm="ngForm" (ngSubmit)="submit(reservationForm)">
 <div class="form-group">
-  <p>
-    Discounted Tickets:
-  </p>
-</div>
-<div class="form-group">
+  <!-- <small id="firstnameHelp" class="form-text text-muted">Enter your name (e.g. Bob)</small> -->
   <mat-form-field>
-    <label for="firstname">Enter First Name</label>
+    <label for="firstnameText">Enter First Name</label>
     <input matInput
       type="text"
-      name="firstname"
-      [(ngModel)]="firstname">
+      name="firstnameText"
+      [(ngModel)]="firstnameText"
+      pattern="[A-Za-z]*"
+      required
+      #firstname="ngModel">
   </mat-form-field>
+
   <mat-error *ngIf="firstname.invalid && (firstname.dirty || firstname.touched) && firstname.errors.required">
-    Name is required!
+      First Name is required!
   </mat-error>
+
+  <mat-error *ngIf="firstname.invalid && (firstname.dirty || firstname.touched) && firstname.errors.pattern">
+      Your First Name must only contain letters!
+    </mat-error>
+
 </div>
   <br>
   <mat-form-field>
-    <label for="lastname">Enter Last Name</label>
+    <label for="lastnameText">Enter Last Name</label>
     <input matInput
       type="text"
-      name="lastname"
-      [(ngModel)]="lastname">
+      name="lastnameText"
+      [(ngModel)]="lastnameText"
+      pattern="[A-Za-z]*"
+      required
+      #lastname="ngModel">
   </mat-form-field>
+  <mat-error *ngIf="lastname.invalid && (lastname.dirty || lastname.touched) && lastname.errors.required">
+      Last Name is required!
+  </mat-error>
+
+  <mat-error *ngIf="lastname.invalid && (lastname.dirty || lastname.touched) && lastname.errors.pattern">
+      Your Last Name must only contain letters!
+    </mat-error>
+
   <br>
   <mat-form-field>
-    <label for="phone">Enter Phone Number</label>
+    <label for="phoneText">Enter Phone Number</label>
     <input matInput
       type="text"
-      name="phone"
-      [(ngModel)]="phone">
+      name="phoneText"
+      [(ngModel)]="phoneText"
+      pattern="[0-9]*"
+      required
+      #phone="ngModel">
   </mat-form-field>
+  <mat-error *ngIf="phone.invalid && (phone.dirty || phone.touched) && phone.errors.required">
+      Phone Number is required!
+  </mat-error>
+
+  <mat-error *ngIf="phone.invalid && (phone.dirty || phone.touched) && phone.errors.pattern">
+      Your Phone Number must only contain numbers!
+    </mat-error>
+
   <br>
   <button mat-raised-button
     [disabled]="!reservationForm.valid"
@@ -42,3 +83,5 @@
 </form>
 
 Angular Generated Form Model: {{reservationForm.value | json}}
+
+</html>
