@@ -22,6 +22,7 @@ export class ReservationComponent implements OnChanges {
   private discounted: number;
   private full: number;
   private price: number;
+  private screening_id: number;
 
   @Input() reservation : Reservation;
   public model : Reservation = <Reservation> {};
@@ -35,6 +36,7 @@ export class ReservationComponent implements OnChanges {
 
     async ngOnInit(): Promise<void> {
       const id = +this.route.snapshot.paramMap.get('id');
+      this.screening_id = id;
       this.movie = await this.movieService.getMovie(id);
 
       this.reservationService.currentDiscounted.subscribe(discounted => this.discounted = discounted);
@@ -48,13 +50,14 @@ export class ReservationComponent implements OnChanges {
   }
 
   async submit(form: NgForm): Promise<void> {
-    this.model.firstname = form.value.firstname;
-    this.model.lastname = form.value.firstname;
+    this.model.firstname = form.value.firstnameText;
+    this.model.lastname = form.value.lastnameText;
+    this.model.screening_id = 0;
     this.model.normalseats = this.discounted;
     this.model.studentseats = this.full;
-    this.model.price = this.discounted*800 + this.full* 1200;
+    this.model.price = this.price;
     this.model.fromseat = 0;
-    this.model.phone = form.value.phone;
+    this.model.phone = form.value.phoneText;
     this.reservationService.createReservation(this.model);
     if (!form.valid) {
       return;
