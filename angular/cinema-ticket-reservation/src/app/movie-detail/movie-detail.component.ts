@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { MovieService } from '../movie.service';
 import { ReservationService } from '../reservation.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { CategoryService } from '../category.service';
+import { Category } from '../category';
 
 @Component({
   selector: 'app-movie-detail',
@@ -17,12 +19,14 @@ export class MovieDetailComponent implements OnInit {
   public discounted: number;
   public full: number;
 
+  public categories: Category[] = null;
 
   constructor(
     private route: ActivatedRoute,
     private movieService: MovieService,
     private sanitizer: DomSanitizer,
     private reservationService: ReservationService,
+    private categoryService: CategoryService
   ) {  }
   
   async ngOnInit(): Promise<void> {
@@ -32,6 +36,7 @@ export class MovieDetailComponent implements OnInit {
     this.reservationService.currentDiscounted.subscribe(discounted => this.discounted = discounted);
     this.reservationService.currentFull.subscribe(full => this.full = full);
 
+    this.categories = await this.categoryService.getCategories();
   }
 
   setDiscountedAndFull(dc: number,full: number) {

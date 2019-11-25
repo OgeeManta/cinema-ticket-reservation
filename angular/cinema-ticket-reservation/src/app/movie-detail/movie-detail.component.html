@@ -6,6 +6,7 @@
     <table>
         <tr><th>Runtime</th><td>{{ movie.runtime }} minutes</td><td rowspan="2"><iframe id="trailer" width="360" height="220" [src]="updateVideoUrl(movie.trailer)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td></tr>
         <tr><th>Description</th><td>{{ movie.description }}</td></tr>  
+        <tr><th>Categories</th><td>{{ categories.text }}</td></tr>  
     </table>
     <div>
         Discounted: <input #discounted type="number"> Full price: <input #full type="number">

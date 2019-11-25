@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Movie } from "./movie";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { DomSanitizer } from '@angular/platform-browser';
 
 const httpOptions = {
   headers: new HttpHeaders({ 
