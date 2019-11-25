@@ -13,13 +13,15 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { HttpClientModule } from "@angular/common/http";
 import { ReservationComponent } from './reservation/reservation.component';
+import { ScreeningComponent } from './screening/screening.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MovieListComponent,
     MovieDetailComponent,
-    ReservationComponent  
+    ReservationComponent,
+    ScreeningComponent  
   ],
   imports: [
     NgbModule,

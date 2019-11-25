@@ -22,11 +22,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import hu.elte.ctr.repositories.ScreeningRepository;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 /**
  *
  * @author Betűmix
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/screenings")
 public class ScreeningController {

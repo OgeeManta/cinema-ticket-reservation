@@ -52,7 +52,7 @@ export class ReservationComponent implements OnChanges {
   async submit(form: NgForm): Promise<void> {
     this.model.firstname = form.value.firstnameText;
     this.model.lastname = form.value.lastnameText;
-    this.model.screening_id = 0;
+    this.model.screening_id = this.screening_id;
     this.model.normalseats = this.discounted;
     this.model.studentseats = this.full;
     this.model.price = this.price;
