@@ -36,7 +36,7 @@ export class MovieDetailComponent implements OnInit {
     this.reservationService.currentDiscounted.subscribe(discounted => this.discounted = discounted);
     this.reservationService.currentFull.subscribe(full => this.full = full);
 
-    this.categories = await this.categoryService.getCategories();
+    //this.categories = await this.categoryService.getCategories();
   }
 
   setDiscountedAndFull(dc: number,full: number) {
