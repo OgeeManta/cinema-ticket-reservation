@@ -19,14 +19,11 @@ export class MovieDetailComponent implements OnInit {
   public discounted: number;
   public full: number;
 
-  public categories: Category[] = null;
-
   constructor(
     private route: ActivatedRoute,
     private movieService: MovieService,
     private sanitizer: DomSanitizer,
-    private reservationService: ReservationService,
-    private categoryService: CategoryService
+    private reservationService: ReservationService
   ) {  }
   
   async ngOnInit(): Promise<void> {
@@ -35,8 +32,6 @@ export class MovieDetailComponent implements OnInit {
 
     this.reservationService.currentDiscounted.subscribe(discounted => this.discounted = discounted);
     this.reservationService.currentFull.subscribe(full => this.full = full);
-
-    //this.categories = await this.categoryService.getCategories();
   }
 
   setDiscountedAndFull(dc: number,full: number) {

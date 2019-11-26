@@ -66,7 +66,18 @@ public class ScreeningController {
         Screening savedScreening = screeningRepository.save(screening);
         return ResponseEntity.ok(savedScreening);
     }
-
+    
+    @PutMapping("/{id}")
+    public ResponseEntity<Screening> put(@RequestBody Screening screening, @PathVariable Integer id) {
+        Optional<Screening> oScreening = screeningRepository.findById(id);
+        if (oScreening.isPresent()) {
+            screening.setId(id);
+            return ResponseEntity.ok(screeningRepository.save(screening));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+/*
     @PutMapping("/admin/{id}")
     @Secured({ "ROLE_ADMIN" })
     public ResponseEntity<Screening> put(@RequestBody Screening screening, @PathVariable Integer id) {
@@ -78,7 +89,7 @@ public class ScreeningController {
             return ResponseEntity.notFound().build();
         }
     }
-
+*/
     @DeleteMapping("/admin/{id}")
     @Secured({ "ROLE_ADMIN" })
     public ResponseEntity delete(@PathVariable Integer id) {

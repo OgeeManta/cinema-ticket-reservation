@@ -44,5 +44,5 @@ public class Auditorium{
     private Integer seats;
     
     @OneToMany(mappedBy = "auditorium")
-    private List<Screening> screening;
+    private List<Screening> screenings;
 }
