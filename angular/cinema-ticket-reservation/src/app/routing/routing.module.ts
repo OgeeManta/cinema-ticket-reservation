@@ -17,7 +17,7 @@ const routes: Routes = [
   {
     path: 'movies',
     component: MovieListComponent,
-    canActivate: [AuthGuard]
+    
   },
   {
     path: 'movies/:id',
@@ -25,11 +25,13 @@ const routes: Routes = [
   },
   {
     path: 'reservation',
-    component: ReservationComponent
+    component: ReservationComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'reservation/:id',
-    component: ReservationComponent
+    component: ReservationComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'screenings',

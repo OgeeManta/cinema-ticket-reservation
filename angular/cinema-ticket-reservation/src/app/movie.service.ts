@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Movie } from "./movie";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { AuthService, httpOptions } from './auth.service';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 
+    'Content-Type': 'application/json'
+  })
+};
 
 @Injectable({
   providedIn: 'root'

@@ -33,7 +33,7 @@ nav li#login, nav li#logout {
 	background-color: rgb(155, 2, 2, 0.8);
 }
 
-nav li#login:hover{
+nav li#login:hover, nav li#logout:hover{
 	background-color: rgb(199, 6, 6, 0.5);
 }
 

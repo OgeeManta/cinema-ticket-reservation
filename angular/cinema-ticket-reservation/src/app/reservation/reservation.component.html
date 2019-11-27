@@ -12,7 +12,6 @@
 
 <form #reservationForm="ngForm" (ngSubmit)="submit(reservationForm)">
 <div class="form-group">
-  <!-- <small id="firstnameHelp" class="form-text text-muted">Enter your name (e.g. Bob)</small> -->
   <mat-form-field>
     <label for="firstnameText">Enter First Name</label>
     <input matInput
@@ -32,7 +31,7 @@
       Your First Name must only contain letters!
     </mat-error>
 
-</div>
+
   <br>
   <mat-form-field>
     <label for="lastnameText">Enter Last Name</label>
@@ -78,6 +77,7 @@
     color="primary">
     Book Reservation
   </button>
+</div>
 </form>
 
 Angular Generated Form Model: {{reservationForm.value | json}}

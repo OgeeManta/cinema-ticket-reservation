@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +10,12 @@ import { AuthService } from './auth.service';
 export class AppComponent {
   title = 'cinema-ticket-reservation';
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService, 
+            private router: Router) { }
 
   logout()
   {
     this.authService.logout();
+    this.router.navigate(['/']);
   }
 }

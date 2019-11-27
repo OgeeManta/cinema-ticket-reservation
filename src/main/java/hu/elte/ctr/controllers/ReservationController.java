@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
  */
 @CrossOrigin
 @RestController
-@RequestMapping("/reservations")
+@RequestMapping("/reservation")
 public class ReservationController {
 
     @Autowired

@@ -1,21 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Reservation } from "./reservation";
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, Subject, BehaviorSubject } from 'rxjs';
-import { Movie } from './movie';
-
-const httpOptions = {
-  headers: new HttpHeaders({ 
-    'Content-Type': 'application/json'
-  })
-};
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
+import { httpOptions } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReservationService {
 
-  private reservationUrl = 'http://localhost:8080/reservations';
+  private reservationUrl = 'http://localhost:8080/reservation';
 
   private discountedSource = new BehaviorSubject(0);
   currentDiscounted = this.discountedSource.asObservable();
