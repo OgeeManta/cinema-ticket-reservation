@@ -1,7 +1,14 @@
 <nav>
     <ul>
-        <li><a [routerLink]="['/movies']">Movies</a></li>
-        <li id="login"><a [routerLink]="['/movies']">Login</a></li>
+        <div *ngIf="authService.isLoggedIn">
+            <li><a [routerLink]="['/movies']">Movies</a></li>
+            <li id="logout"><a (click)="logout()">Logout</a></li>
+            <span>Hello {{authService.user.username}}!</span>
+        </div>
+        <div *ngIf="!authService.isLoggedIn">
+            <li><a [routerLink]="['/movies']">Movies</a></li>
+            <li id="login"><a [routerLink]="['/login']">Login</a></li>
+        </div>
     </ul>
 </nav>
 <router-outlet></router-outlet>

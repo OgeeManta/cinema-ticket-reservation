@@ -5,7 +5,7 @@ import { RoutingModule } from './routing/routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { MatToolbarModule, MatButtonToggleModule, MatIconModule, MatButtonModule, MatMenuModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -14,6 +14,7 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { HttpClientModule } from "@angular/common/http";
 import { ReservationComponent } from './reservation/reservation.component';
 import { ScreeningComponent } from './screening/screening.component';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ScreeningComponent } from './screening/screening.component';
     MovieListComponent,
     MovieDetailComponent,
     ReservationComponent,
-    ScreeningComponent  
+    ScreeningComponent,
+    LoginFormComponent  
   ],
   imports: [
     NgbModule,
@@ -38,6 +40,7 @@ import { ScreeningComponent } from './screening/screening.component';
     FlexLayoutModule,
     RoutingModule,
     HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

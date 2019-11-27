@@ -25,8 +25,7 @@ export class MovieDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private movieService: MovieService,
     private sanitizer: DomSanitizer,
-    private reservationService: ReservationService,
-    private categoryService: CategoryService
+    private reservationService: ReservationService
   ) {  }
   
   async ngOnInit(): Promise<void> {

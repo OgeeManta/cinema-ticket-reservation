@@ -5,6 +5,8 @@ import { MovieListComponent } from "../movie-list/movie-list.component";
 import { MovieDetailComponent } from '../movie-detail/movie-detail.component';
 import { ReservationComponent } from '../reservation/reservation.component';
 import { ScreeningComponent } from '../screening/screening.component';
+import { AuthGuard } from '../auth.guard';
+import { LoginFormComponent } from '../login-form/login-form.component';
 
 const routes: Routes = [
   {
@@ -14,7 +16,8 @@ const routes: Routes = [
   },
   {
     path: 'movies',
-    component: MovieListComponent
+    component: MovieListComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'movies/:id',
@@ -31,6 +34,10 @@ const routes: Routes = [
   {
     path: 'screenings',
     component: ScreeningComponent
+  },
+  {
+    path: 'login',
+    component: LoginFormComponent
   },
 ];
 
