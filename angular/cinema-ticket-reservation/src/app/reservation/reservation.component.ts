@@ -8,6 +8,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Component, OnChanges, Input, Output, EventEmitter  } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Movie } from '../movie';
+import { Screening } from '../screening';
+import { ScreeningService } from '../screening.service';
 
 @Component({
   selector: 'reservation',
@@ -22,21 +24,21 @@ export class ReservationComponent implements OnChanges {
   private discounted: number;
   private full: number;
   private price: number;
-  private screening_id: number;
 
   @Input() reservation : Reservation;
   public model : Reservation = <Reservation> {};
   @Output() onSubmit = new EventEmitter<Reservation>();
 
+
   constructor(
     private reservationService: ReservationService,
+    private screeningService: ScreeningService,
     private movieService: MovieService,
     private route: ActivatedRoute
   ) {  }
 
     async ngOnInit(): Promise<void> {
       const id = +this.route.snapshot.paramMap.get('id');
-      this.screening_id = id;
       this.movie = await this.movieService.getMovie(id);
 
       this.reservationService.currentDiscounted.subscribe(discounted => this.discounted = discounted);
@@ -52,13 +54,17 @@ export class ReservationComponent implements OnChanges {
   async submit(form: NgForm): Promise<void> {
     this.model.firstname = form.value.firstnameText;
     this.model.lastname = form.value.lastnameText;
-    this.model.screening_id = this.screening_id;
+    this.model.screening = this.movie.screenings[0];
+    console.log(this.movie.screenings[0]);
     this.model.normalseats = this.discounted;
     this.model.studentseats = this.full;
     this.model.price = this.price;
     this.model.fromseat = 0;
     this.model.phone = form.value.phoneText;
     this.reservationService.createReservation(this.model);
+
+    console.log(this.movie.screenings[0]);
+
     if (!form.valid) {
       return;
     }

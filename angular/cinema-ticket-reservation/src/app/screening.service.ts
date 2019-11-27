@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Screening } from './screening';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Reservation } from './reservation';
 
 const httpOptions = {
   headers: new HttpHeaders({ 

@@ -54,5 +54,5 @@ public class Screening implements Serializable{
     private Auditorium auditorium;
     
     @OneToMany(mappedBy = "screening")
-    private List<Reservation> reservation;
+    private List<Reservation> reservations;
 }

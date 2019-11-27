@@ -3,7 +3,9 @@
   <td *ngFor="let screening of screenings">
     <tr><b>{{ screening.id }}</b></tr>
     <tr>{{ screening.dateofscreening}}</tr>
-    <tr>{{ screening.movie}}</tr>
-    <tr>{{ screening.auditorium}}</tr>
+    <tr>{{ movie.title}}</tr>
+    <tr>{{ auditorium.auditoriumname}}</tr>
+    <tr> <span *ngFor="let reservation of screening.reservations">{{ reservation.lastname }}    </span> </tr>
+
   </td>
 </table>

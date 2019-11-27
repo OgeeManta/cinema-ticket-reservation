@@ -54,6 +54,6 @@ public class Movie {
   private List<Category> categories;
   
     @OneToMany(mappedBy = "movie")
-    private List<Screening> screening;
+    private List<Screening> screenings;
   
 }
