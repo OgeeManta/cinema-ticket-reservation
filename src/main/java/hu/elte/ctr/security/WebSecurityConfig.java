@@ -29,7 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
           .authorizeRequests()
               //.antMatchers("/h2/**", "/users/register").permitAll()
               .antMatchers("/h2/**", "/users/register", "/movies/**", "/movies").permitAll()// important!
-              //.antMatchers("/auditoriums/**").hasRole("ADMIN")
+              .anyRequest().authenticated()
               .and()
           .httpBasic()
               .authenticationEntryPoint(getBasicAuthEntryPoint())
@@ -50,6 +50,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+          .userDetailsService(userDetailsService)
+          .passwordEncoder(passwordEncoder());
     }
     
     @Bean

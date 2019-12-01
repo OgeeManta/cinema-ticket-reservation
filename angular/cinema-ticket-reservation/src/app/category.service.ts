@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Category } from './category';
+import { httpOptions } from './auth.service';
 
-const httpOptions = {
+/*const httpOptions = {
   headers: new HttpHeaders({ 
     'Content-Type': 'application/json'
   })
-};
+};*/
 
 @Injectable({
   providedIn: 'root'
