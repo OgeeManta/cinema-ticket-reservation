@@ -27,16 +27,16 @@ Az alkalmazás egy mozi jegyfoglalásának a weben történő működését tesz
 #### Felhasználói történetek: 
 ##### Felhasználó:
 - Szeretnénk megnézi egy film adatait: Rákattintottunk a „Tovább a filmhez” gombra a választott film alatt. A választott film adatlapjára irányítódunk.
-- Szeretnénk megadni a lefoglalni kívánt jegyek mennyiségét: Kiválasztottuk a számunkra megfelelő vetítési időpontot a táblázatból és a felugró ablakban kiválasztottuk a jegyek típusát és darabszámát. 
+- Szeretnénk megadni a lefoglalni kívánt jegyek mennyiségét: Kiválasztottuk a számunkra megfelelő vetítési időpontot a táblázatból és a  jegyek típusát és darabszámát. 
 	- Ha be vagyunk jelentkezve, akkor átirányítódunk az oldalra, ahol a kiválasztott jegyek darabszámának függvényében tudunk kijelölni helyeket az adott terembe.
 	- Ha nem vagyunk bejelentkezve, kapunk egy hibaüzenetet, hogy nem vagyunk bejelentkezve és egy felszólítást, hogy a továbblépéshez jelentkezzünk be.
 - Szeretnénk bejelentkezni: Rákattintottunk a jobb felső sarokban lévő login gombra.
-	- Ha nem vagyunk bejelentkezve és a helyes email-t és jelszót adtuk meg, akkor a rendszer bejelentkeztet a felhasználói fiókunkba.
-	 - Ha nem vagyunk bejelentkezve, de nem a helyes email-t vagy jelszót adtuk meg, akkor kapunk egy hibaüzenetet, hogy rossz email-t vagy jelszót adtunk meg.
+	- Ha nem vagyunk bejelentkezve és a helyes felhasználónevet és jelszót adtuk meg, akkor a rendszer bejelentkeztet a felhasználói fiókunkba.
+	 - Ha nem vagyunk bejelentkezve, de nem a helyes felhasználónevet vagy jelszót adtuk meg, akkor kapunk egy hibaüzenetet, hogy rossz email-t vagy jelszót adtunk meg.
 	 - Ha be vagyunk jelentkezve a felhasználói fiókunkba, akkor kapunk egy értesítést, hogy már be vagyunk jelentkezve.
-- Szeretnénk kiválasztani a lefoglalni kívánt ülőhelyeket: Előzetesen kiválasztottuk, hogy mennyi jegyet szeretnénk foglalni és kiválasztottuk a konkrét helyeket, azzal, hogy rákattintunk és bejelöljük őket.
-	- Ha olyan helyeket választottunk, amik nem foglaltak, akkor a foglalásunk rögzítésre kerül és kapunk egy értesítést a foglalási azonosítónkról.
-	- Ha olyan helyet választottunk, ami már foglalt volt, akkor nem történik semmi.
+- Szeretnénk kiválasztani a lefoglalni kívánt ülőhelyeket: Előzetesen kiválasztottuk, hogy mennyi jegyet szeretnénk foglalni.
+	- Ha van elég szabad hely, akkor a foglalásunk rögzítésre kerül.
+	- Ha nincs elég szabad hely, akkor nem történik semmi.
 
 ##### Vendég:
 - Szeretnénk megnézi egy film adatait: Rákattintottunk a „Tovább a filmhez” gombra a választott film alatt. A választott film adatlapjára irányítódunk.
@@ -99,8 +99,8 @@ Az alkalmazás egy mozi jegyfoglalásának a weben történő működését tesz
 - POST /register : regisztrálási adatok felküldése
 - GET /movies : az összes film listája
 - GET /movies/:id : egy film adatai
-- GET /reserve : új foglalás felvétele
-- POST /reserve : új foglalás felvétele, adatok küldése
+- GET /reserve/:id : új foglalás felvétele
+- POST /reserve/:id : új foglalás felvétele, adatok küldése
 - PUT /admin/reserve/:id : foglalás módósítása
 - DELETE /admin/reserve/:id : foglalás törlése
 - PUT /admin/movies/:id : film módosítása
@@ -131,15 +131,24 @@ Az alkalmazás egy mozi jegyfoglalásának a weben történő működését tesz
 
 ## Implementáció
 ### Fejlesztői környezet bemutatása:
+Backend:
 - NetBeans IDE 8.2
 - programozási nyelv: Java
 - felhasznált eszközök: Spring Boot, Maven, Git, H2
 
+Frontend:
+- Visual Studio Code
+- programozási nyelv: Typescript
+- felhasznált eszközök: Angular keretrendszer
+
 ### Könyvtárstruktúra:
--cinema-ticket-reservation: 
-	- README fájl, felületi tervek, adatbázisterv
-	- /src/main/...: az adatbázis felépítéséhez szükséges osztályok, melyek tartalmazzák a táblák közötti kapcsolatokat, ill. az endpoint-ok működtetését is.
-	- /src/resources: az sql import és az alkalmazás tulajdonságait tartalmazó fájl van benne. 
+cinema-ticket-reservation: 
+- README fájl, felületi tervek, adatbázisterv
+- /src/main/...: az adatbázis felépítéséhez szükséges osztályok, melyek tartalmazzák a táblák közötti kapcsolatokat, ill. az endpoint-ok működtetését is.
+- /src/resources: az sql import és az alkalmazás tulajdonságait tartalmazó fájl van benne. 
+- angular/cinema-ticket-resevation: Angular keretrendszert tartalmazó fájlok.
+- angular/cinema-ticket-resevation/src/app/...: komponensek, service-ek, entitások.
+- angular/cinema-ticket-resevation/src/assets: a filmek plakátjainak jpg fájljai
 
 ## Felhasználói dokumentáció
 (később)
