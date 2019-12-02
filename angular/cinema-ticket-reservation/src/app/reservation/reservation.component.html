@@ -1,4 +1,13 @@
 <div>
+  <p>
+    Reserving for {{movie.title}}
+  </p>
+  <p>
+    At: {{screening.dateofscreening}}
+  </p>
+</div>
+
+<div>
     <p>
         Discounted Tickets: {{discounted}}
       </p>
@@ -67,7 +76,7 @@
   </mat-error>
 
   <mat-error *ngIf="phone.invalid && (phone.dirty || phone.touched) && phone.errors.pattern">
-      Your Phone Number must only contain numbers!
+      Your Phone Number format should be (+36 11 111 1111)
     </mat-error>
 
   <br>

@@ -6,5 +6,8 @@ export class Screening {
 
     id: number = 0;
     dateofscreening: Date = null;
+    movie: Movie = null;
+    auditorium: Auditorium = null;
+    reservations: Array<Reservation>;
 
 }

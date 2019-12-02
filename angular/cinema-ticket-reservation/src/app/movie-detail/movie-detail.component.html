@@ -5,16 +5,25 @@
     <img src = {{movie.image}}>
     <table>
         <tr><th>Runtime</th><td>{{ movie.runtime }} minutes</td><td rowspan="2"><iframe id="trailer" width="360" height="220" [src]="updateVideoUrl(movie.trailer)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td></tr>
-        <tr><th>Description</th><td>{{ movie.description }}</td></tr>  
+        <tr><th>Description</th><td>{{ movie.description }}</td></tr>
         <tr><th>Categories</th><td>
             <span *ngFor="let category of movie.categories">{{ category.text }}    </span>
         </td></tr>  
     </table>
+    <table>
+    <td *ngFor="let screening of movie.screenings">
+        <label for="screening_answer{{screening.dateofscreening}}">
+            <input id="screening_answer_{{screening.dateofscreening}}" [value]='screening.dateofscreening' type="radio" name="screenings" [(ngModel)]="radioSelected">
+            {{screening.dateofscreening}}
+        </label>
+      </td>
+    </table>
+
     <div>
         Discounted: <input #discounted type="number"> Full price: <input #full type="number">
     </div>
     <div class="reserve">
-        <button (click)="setDiscountedAndFull(discounted.value,full.value)" mat-raised-button [routerLink]="['/reservation', movie.id]">Reserve tickets</button>
+        <button (click)="setDiscountedAndFullAndScreening(discounted.value,full.value,radioSelected.value)" mat-raised-button [routerLink]="['/reservation', movie.id]">Reserve tickets</button>
     </div>
 </body>
 </html>

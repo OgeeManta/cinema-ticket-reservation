@@ -35,13 +35,13 @@ public class AuditoriumController {
     private AuditoriumRepository auditoriumRepository;
     
     @GetMapping("")
-    @Secured({ "ROLE_USER", "ROLE_ADMIN" })
+    //@Secured({ "ROLE_USER", "ROLE_ADMIN" })
     public ResponseEntity<Iterable<Auditorium>> getAll() {
         return ResponseEntity.ok(auditoriumRepository.findAll());
     }
 
     @PutMapping("/admin/{id}")
-    @Secured({ "ROLE_ADMIN" })
+    //@Secured({ "ROLE_ADMIN" })
     public ResponseEntity<Auditorium> put(@PathVariable Integer id, @RequestBody Auditorium aud) {
     Optional<Auditorium> oldAud = auditoriumRepository.findById(id);
     if (!oldAud.isPresent())
@@ -53,7 +53,7 @@ public class AuditoriumController {
   }
     
     @GetMapping("/{id}")
-    @Secured({ "ROLE_USER", "ROLE_ADMIN" })
+    //@Secured({ "ROLE_USER", "ROLE_ADMIN" })
     public ResponseEntity<Auditorium> get(@PathVariable Integer id) {
         Optional<Auditorium> audit = auditoriumRepository.findById(id);
         if (audit.isPresent()) {

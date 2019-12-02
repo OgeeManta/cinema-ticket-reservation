@@ -1,8 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Reservation } from "./reservation";
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
-import { httpOptions } from './auth.service';
+//import { httpOptions } from './auth.service';
+
+export const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': '',
+  })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +24,9 @@ export class ReservationService {
   private fullSource = new BehaviorSubject(0);
   currentFull = this.fullSource.asObservable();
 
+  private screeningIdSource = new BehaviorSubject(0);
+  currentScreeningId = this.screeningIdSource.asObservable();
+
   constructor(
     private http: HttpClient
   ) { }
@@ -29,6 +39,10 @@ export class ReservationService {
     this.fullSource.next(full);
   }
 
+  changeScreeningId(screening_id: number){
+    this.screeningIdSource.next(screening_id);
+  }
+
 getReservations(): Promise<Reservation[]> {
     return this.http.get<Reservation[]>(`${this.reservationUrl}`, httpOptions).toPromise();
 }
@@ -37,8 +51,8 @@ getReservation(id: number): Promise<Reservation> {
   return this.http.get<Reservation>(`${this.reservationUrl}/${id}`, httpOptions).toPromise();
 }
 
-createReservation(reservation: Reservation): Promise<Reservation> {
-  return this.http.post<Reservation>(`${this.reservationUrl}`, reservation, httpOptions).toPromise();
+createReservation(reservation: Reservation, screening_id: number): Promise<Reservation> {
+  return this.http.post<Reservation>(`${this.reservationUrl}/${screening_id}`, reservation, httpOptions).toPromise();
 }
 
 updateReservation(reservation: Reservation): Promise<Reservation> {

@@ -10,6 +10,8 @@ import { NgForm } from '@angular/forms';
 import { Movie } from '../movie';
 import { Screening } from '../screening';
 import { ScreeningService } from '../screening.service';
+import { AuditoriumService } from '../auditorium.service';
+import { Auditorium } from '../auditorium';
 
 @Component({
   selector: 'reservation',
@@ -24,6 +26,10 @@ export class ReservationComponent implements OnChanges {
   private discounted: number;
   private full: number;
   private price: number;
+  private screening_id: number;
+
+  private screening: Screening;
+  private auditorum: Auditorium;
 
   @Input() reservation : Reservation;
   public model : Reservation = <Reservation> {};
@@ -33,6 +39,7 @@ export class ReservationComponent implements OnChanges {
   constructor(
     private reservationService: ReservationService,
     private screeningService: ScreeningService,
+    private auditoriumService: AuditoriumService,
     private movieService: MovieService,
     private route: ActivatedRoute
   ) {  }
@@ -43,6 +50,15 @@ export class ReservationComponent implements OnChanges {
 
       this.reservationService.currentDiscounted.subscribe(discounted => this.discounted = discounted);
       this.reservationService.currentFull.subscribe(full => this.full = full);
+      this.reservationService.currentScreeningId.subscribe(screening_id => this.screening_id = screening_id);
+
+      this.screening = await this.screeningService.getScreening(this.screening_id);
+
+      var date = new Date();
+
+      date = this.screening.dateofscreening;
+
+      console.log(date);
 
       this.price = this.discounted*800 + this.full* 1200;
   }
@@ -54,16 +70,27 @@ export class ReservationComponent implements OnChanges {
   async submit(form: NgForm): Promise<void> {
     this.model.firstname = form.value.firstnameText;
     this.model.lastname = form.value.lastnameText;
-    this.model.screening = this.movie.screenings[0];
-    console.log(this.movie.screenings[0]);
+    this.model.screening = await this.screeningService.getScreening(this.screening_id);
     this.model.normalseats = this.discounted;
     this.model.studentseats = this.full;
     this.model.price = this.price;
-    this.model.fromseat = 0;
     this.model.phone = form.value.phoneText;
-    this.reservationService.createReservation(this.model);
+    let currentSeats = +this.discounted + +this.full;
+    for(var i=0;i<this.screening.reservations.length;i++){
+      currentSeats = +currentSeats + +this.screening.reservations[i].studentseats + +this.screening.reservations[i].normalseats;
+    }
+    console.log(currentSeats);
+    
+    this.auditorum = await this.auditoriumService.getAuditorium(1);
 
-    console.log(this.movie.screenings[0]);
+    console.log(this.auditorum.seats);
+
+    if(currentSeats <= this.auditorum.seats){
+      this.reservationService.createReservation(this.model,this.screening_id);
+    }else{
+      console.log("Sorry but there are not enough seats for your reservation.")
+    }
+
 
     if (!form.valid) {
       return;

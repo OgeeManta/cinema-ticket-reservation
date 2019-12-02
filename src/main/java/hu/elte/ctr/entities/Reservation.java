@@ -8,8 +8,10 @@ package hu.elte.ctr.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -49,9 +51,6 @@ public class Reservation implements Serializable{
     private Integer price;
     
     @Column
-    private Integer fromseat;
-    
-    @Column
     private String firstname;
     
     @Column
@@ -60,9 +59,9 @@ public class Reservation implements Serializable{
     @Column
     private String phone;
     
-    @ManyToOne
-    @JoinColumn
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "screening_id")
     @JsonIgnore
     private Screening screening;
-    
+
 }

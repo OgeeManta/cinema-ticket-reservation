@@ -26,15 +26,15 @@ const routes: Routes = [
   {
     path: 'reservation',
     component: ReservationComponent,
-    canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
   },
   {
     path: 'reservation/:id',
     component: ReservationComponent,
-    canActivate: [AuthGuard],
-    data: {
-      roles: ['ROLE_ADMIN']
-    }
+    //canActivate: [AuthGuard],
+    //data: {
+    //  roles: ['ROLE_ADMIN']
+    //}
   },
   {
     path: 'screenings',

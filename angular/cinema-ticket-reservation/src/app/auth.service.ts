@@ -5,7 +5,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 export const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
-    //'Authorization': '',
+    'Authorization': '',
   })
 };
 
@@ -28,8 +28,10 @@ export class AuthService {
     try {
       const token = btoa(`${username}:${password}`);
       httpOptions.headers = httpOptions.headers.set('Authorization', `Basic ${token}`);
-      this.user = await this.http.post<User>(`${this.authUrl}/login`, {}, httpOptions).toPromise();
+      const user = await this.http.post<User>(`${this.authUrl}/login`, {}, httpOptions).toPromise();
       this.isLoggedIn = true;
+      this.user = user;
+      console.log(user);
       return Promise.resolve(this.user);
     } catch (e) {
       console.log(e);

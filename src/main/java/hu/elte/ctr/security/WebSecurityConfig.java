@@ -28,8 +28,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
           .csrf().disable()
           .authorizeRequests()
               //.antMatchers("/h2/**", "/users/register").permitAll()
-              .antMatchers("/h2/**", "/users/register", "/movies/**", "/movies").permitAll()// important!
-              .anyRequest().authenticated()
+              .antMatchers("/h2/**", "/users/register", "/movies/**", "/movies","/reservation/**").permitAll()// important!
+              //.anyRequest().authenticated()
               .and()
           .httpBasic()
               .authenticationEntryPoint(getBasicAuthEntryPoint())
