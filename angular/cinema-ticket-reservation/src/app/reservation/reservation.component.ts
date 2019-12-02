@@ -71,8 +71,8 @@ export class ReservationComponent implements OnChanges {
     this.model.firstname = form.value.firstnameText;
     this.model.lastname = form.value.lastnameText;
     this.model.screening = await this.screeningService.getScreening(this.screening_id);
-    this.model.normalseats = this.discounted;
-    this.model.studentseats = this.full;
+    this.model.normalseats = this.full;
+    this.model.studentseats = this.discounted;
     this.model.price = this.price;
     this.model.phone = form.value.phoneText;
     let currentSeats = +this.discounted + +this.full;
