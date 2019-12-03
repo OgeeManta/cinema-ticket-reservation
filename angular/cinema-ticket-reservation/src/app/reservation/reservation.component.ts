@@ -33,6 +33,8 @@ export class ReservationComponent implements OnChanges {
   private screening: Screening;
   private auditorum: Auditorium;
 
+  private auditoriums: Auditorium[];
+
   @Input() reservation : Reservation;
   public model : Reservation = <Reservation> {};
   @Output() onSubmit = new EventEmitter<Reservation>();
@@ -56,11 +58,12 @@ export class ReservationComponent implements OnChanges {
       this.reservationService.currentScreeningId.subscribe(screening_id => this.screening_id = screening_id);
 
       this.screening = await this.screeningService.getScreening(this.screening_id);
+      this.auditoriums = await this.auditoriumService.getAuditoriums();
+
 
       this.pipe = new DatePipe('en-US');
 
       this.screeningDate = this.pipe.transform(this.screening.dateofscreening, 'medium');
-      console.log(this.screeningDate);
 
       this.price = this.discounted*800 + this.full* 1200;
   }
@@ -81,11 +84,8 @@ export class ReservationComponent implements OnChanges {
     for(var i=0;i<this.screening.reservations.length;i++){
       currentSeats = +currentSeats + +this.screening.reservations[i].studentseats + +this.screening.reservations[i].normalseats;
     }
-    console.log(currentSeats);
-    
+ 
     this.auditorum = await this.auditoriumService.getAuditorium(1);
-
-    console.log(this.auditorum.seats);
 
     if(currentSeats <= this.auditorum.seats){
       this.reservationService.createReservation(this.model,this.screening_id);

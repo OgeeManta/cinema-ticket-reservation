@@ -22,3 +22,12 @@ th,td{
     padding: 10px;
 }
 
+#reserveButton{
+    margin-left: 5%;
+    padding: 10px;
+}
+
+::ng-deep .mat-form-field .mat-form-field-underline {
+    background-color: white;
+}
+
