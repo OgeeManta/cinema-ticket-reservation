@@ -12,6 +12,7 @@ import { Screening } from '../screening';
 import { ScreeningService } from '../screening.service';
 import { AuditoriumService } from '../auditorium.service';
 import { Auditorium } from '../auditorium';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'reservation',
@@ -23,6 +24,7 @@ export class ReservationComponent implements OnChanges {
   private reservations: Reservation[];
 
   public movie: Movie = null;
+  public screeningDate: string = '';
   private discounted: number;
   private full: number;
   private price: number;
@@ -34,6 +36,7 @@ export class ReservationComponent implements OnChanges {
   @Input() reservation : Reservation;
   public model : Reservation = <Reservation> {};
   @Output() onSubmit = new EventEmitter<Reservation>();
+  pipe: any;
 
 
   constructor(
@@ -54,11 +57,10 @@ export class ReservationComponent implements OnChanges {
 
       this.screening = await this.screeningService.getScreening(this.screening_id);
 
-      var date = new Date();
+      this.pipe = new DatePipe('en-US');
 
-      date = this.screening.dateofscreening;
-
-      console.log(date);
+      this.screeningDate = this.pipe.transform(this.screening.dateofscreening, 'medium');
+      console.log(this.screeningDate);
 
       this.price = this.discounted*800 + this.full* 1200;
   }

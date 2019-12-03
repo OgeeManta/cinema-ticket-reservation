@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Screening } from './screening';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Reservation } from './reservation';
+import { BehaviorSubject } from 'rxjs';
+import { DatePipe } from '@angular/common';
 //import { httpOptions } from './auth.service';
 
 export const httpOptions = {
@@ -18,27 +20,39 @@ export class ScreeningService {
 
   private screeningUrl = 'http://localhost:8080/screenings';
 
+  private dateSource = new BehaviorSubject(0);
+  currentDate = this.dateSource.asObservable();
+  pipe: any;
+  screeningDate: string;
+
   constructor(private http: HttpClient) { }
 
+  screeningDateToString(date:Date) {
+    this.pipe = new DatePipe('en-US');
 
-getScreenings(): Promise<Screening[]> {
-    return this.http.get<Screening[]>(`${this.screeningUrl}`, httpOptions).toPromise();
-}
+    this.screeningDate = this.pipe.transform(date, 'medium');  
+    
+  }
 
-getScreening(id: number): Promise<Screening> {
-  return this.http.get<Screening>(`${this.screeningUrl}/${id}`, httpOptions).toPromise();
-}
+    
+  getScreenings(): Promise<Screening[]> {
+      return this.http.get<Screening[]>(`${this.screeningUrl}`, httpOptions).toPromise();
+  }
 
-createScreening(screening: Screening): Promise<Screening> {
-  return this.http.post<Screening>(`${this.screeningUrl}`, screening, httpOptions).toPromise();
-}
+  getScreening(id: number): Promise<Screening> {
+    return this.http.get<Screening>(`${this.screeningUrl}/${id}`, httpOptions).toPromise();
+  }
 
-updateScreening(screening: Screening): Promise<Screening> {
-  return this.http.put<Screening>(`${this.screeningUrl}/${screening.id}`, screening, httpOptions).toPromise();
-}
+  createScreening(screening: Screening): Promise<Screening> {
+    return this.http.post<Screening>(`${this.screeningUrl}`, screening, httpOptions).toPromise();
+  }
 
-deleteScreening(id): Promise<Screening> {
-  return this.http.delete<Screening>(`${this.screeningUrl}/${id}`, httpOptions).toPromise();
-}
+  updateScreening(screening: Screening): Promise<Screening> {
+    return this.http.put<Screening>(`${this.screeningUrl}/${screening.id}`, screening, httpOptions).toPromise();
+  }
+
+  deleteScreening(id): Promise<Screening> {
+    return this.http.delete<Screening>(`${this.screeningUrl}/${id}`, httpOptions).toPromise();
+  }
 
 }

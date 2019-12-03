@@ -18,6 +18,7 @@ export class MovieDetailComponent implements OnInit {
   
   public movie: Movie = null;
   public screenings: Screening[] = null;
+  public screeningDates: string[] = null;
   public screening: Screening = null;
 
   public discounted: number;
@@ -36,8 +37,6 @@ export class MovieDetailComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     const id = +this.route.snapshot.paramMap.get('id');
     this.movie = await this.movieService.getMovie(id);
-
-    console.log(this.screenings);
 
     this.reservationService.currentDiscounted.subscribe(discounted => this.discounted = discounted);
     this.reservationService.currentFull.subscribe(full => this.full = full);
