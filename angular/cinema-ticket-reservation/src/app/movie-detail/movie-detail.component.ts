@@ -8,6 +8,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { CategoryService } from '../category.service';
 import { Category } from '../category';
 import { Screening } from '../screening';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-movie-detail',
@@ -18,13 +19,13 @@ export class MovieDetailComponent implements OnInit {
   
   public movie: Movie = null;
   public screenings: Screening[] = null;
-  public screeningDates: string[] = null;
   public screening: Screening = null;
 
   public discounted: number;
   public full: number;
   public screening_id: number;
   radioSelected: any;
+  pipe: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -38,9 +39,18 @@ export class MovieDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.movie = await this.movieService.getMovie(id);
 
+    this.datesToString();
+
     this.reservationService.currentDiscounted.subscribe(discounted => this.discounted = discounted);
     this.reservationService.currentFull.subscribe(full => this.full = full);
     this.reservationService.currentScreeningId.subscribe(screening_id => this.screening_id = screening_id);
+  }
+
+  datesToString(){
+    this.pipe = new DatePipe('en-US');
+    for(var i=0;i<this.movie.screenings.length;i++){
+      this.movie.screenings[i].dateString = this.pipe.transform(this.movie.screenings[i].dateofscreening, 'medium') 
+    }
   }
 
   setDiscountedAndFullAndScreening(dc: number,full: number) {

@@ -9,5 +9,6 @@ export class Screening {
     movie: Movie = null;
     auditorium: Auditorium = null;
     reservations: Array<Reservation>;
+    dateString: string = '';
 
 }

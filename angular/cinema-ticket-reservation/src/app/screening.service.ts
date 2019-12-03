@@ -20,19 +20,7 @@ export class ScreeningService {
 
   private screeningUrl = 'http://localhost:8080/screenings';
 
-  private dateSource = new BehaviorSubject(0);
-  currentDate = this.dateSource.asObservable();
-  pipe: any;
-  screeningDate: string;
-
   constructor(private http: HttpClient) { }
-
-  screeningDateToString(date:Date) {
-    this.pipe = new DatePipe('en-US');
-
-    this.screeningDate = this.pipe.transform(date, 'medium');  
-    
-  }
 
     
   getScreenings(): Promise<Screening[]> {

@@ -14,7 +14,7 @@
     <td *ngFor="let screening of movie.screenings">
         <label for="screening_answer{{screening.dateofscreening}}">
             <input id="screening_answer_{{screening.dateofscreening}}" [value]='screening.dateofscreening' type="radio" name="screenings" [(ngModel)]="radioSelected">
-            {{screening.dateofscreening}}
+            {{screening.dateString}}
         </label>
       </td>
     </table>
