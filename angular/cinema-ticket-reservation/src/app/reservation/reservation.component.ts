@@ -3,7 +3,7 @@ import { Reservation } from "../reservation";
 import { ReservationService } from '../reservation.service';
 import { MovieService } from '../movie.service';
 
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Component, OnChanges, Input, Output, EventEmitter  } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -40,13 +40,24 @@ export class ReservationComponent implements OnChanges {
   @Output() onSubmit = new EventEmitter<Reservation>();
   pipe: any;
 
+  popUpOpen = false;
+
+  openPopUp() {
+    this.popUpOpen = true;
+  }
+
+  backOption() {
+    this.popUpOpen = false;
+    this.router.navigate(['/']);
+  }
 
   constructor(
     private reservationService: ReservationService,
     private screeningService: ScreeningService,
     private auditoriumService: AuditoriumService,
     private movieService: MovieService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {  }
 
     async ngOnInit(): Promise<void> {

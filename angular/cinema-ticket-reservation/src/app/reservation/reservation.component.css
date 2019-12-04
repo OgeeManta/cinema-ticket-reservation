@@ -17,3 +17,29 @@ label{
 button{
     margin: 15px;
 }
+
+.box {
+    text-align: center;
+    border: 1px solid white;
+    padding: 3ch;
+    position: relative;
+    min-width: 30ch;
+}
+
+header {
+    position: absolute;
+    display: inline-block;
+    left: 0;
+    right: 0;
+    top: 10px;
+    font-size: 1.5em;
+}
+
+footer {
+    padding-top: 20px;
+}
+
+main {
+    padding: 10px 10px;
+}
+

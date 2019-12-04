@@ -15,6 +15,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { ReservationComponent } from './reservation/reservation.component';
 import { ScreeningComponent } from './screening/screening.component';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { PopUpComponent } from './pop-up/pop-up.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
     MovieDetailComponent,
     ReservationComponent,
     ScreeningComponent,
-    LoginFormComponent  
+    LoginFormComponent,
+    PopUpComponent  
   ],
   imports: [
     NgbModule,

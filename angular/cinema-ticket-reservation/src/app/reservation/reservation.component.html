@@ -81,10 +81,24 @@
 
   <br>
   <button mat-raised-button
-    [disabled]="!reservationForm.valid"
-    type="submit"
-    color="primary">
+    [disabled]="popUpOpen" 
+    (click)="openPopUp()"
+    type="submit">
     Book Reservation
   </button>
 </div>
 </form>
+
+<app-pop-up class="my-prompt" [isOpen]="popUpOpen">
+  <div class="box">
+    <header>
+      <span class="title">Tickets successfully reserved!</span>
+    </header>
+    <main>
+      <p>Thank you for reserving!</p>
+    </main>
+    <footer>
+      <button mat-raised-button (click)="backOption()">Go back to movies</button>
+    </footer>
+  </div>
+</app-pop-up>
