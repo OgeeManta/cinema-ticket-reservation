@@ -81,13 +81,13 @@
 
   <br>
   <button mat-raised-button
-    [disabled]="popUpOpen" 
-    (click)="openPopUp()"
+    [disabled]="popUpOpen"
+    [disabled]="PopUpOpenBad"
     type="submit">
     Book Reservation
   </button>
 </div>
-</form>
+
 
 <app-pop-up class="my-prompt" [isOpen]="popUpOpen">
   <div class="box">
@@ -98,7 +98,24 @@
       <p>Thank you for reserving!</p>
     </main>
     <footer>
-      <button mat-raised-button (click)="backOption()">Go back to movies</button>
+      <button mat-raised-button type="button" (click)="backOption()">Go back to movies</button>
     </footer>
   </div>
 </app-pop-up>
+
+<app-pop-up class="my-prompt" [isOpen]="popUpOpenBad">
+    <div class="box">
+      <header>
+        <span class="title">Unsuccessful reservation!</span>
+      </header>
+      <main>
+        <p>Sorry, we don't have enough seats left for you!</p>
+        <p>Thank you for your understanding!</p>
+      </main>
+      <footer>
+        <button mat-raised-button type="button" (click)="backOption()">Go back to movies</button>
+      </footer>
+    </div>
+  </app-pop-up>
+
+</form>
