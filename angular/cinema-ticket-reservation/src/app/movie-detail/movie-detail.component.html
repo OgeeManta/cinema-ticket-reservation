@@ -10,43 +10,62 @@
             <span *ngFor="let category of movie.categories">{{ category.text }}    </span>
         </td></tr>  
     </table>
-    <form #reservationForm="ngForm" (ngSubmit)="setDiscountedAndFullAndScreening(discounted.value,full.value,radioSelected.value)">
-    <td *ngFor="let screening of movie.screenings">
-        <label for="screening_answer{{screening.dateofscreening}}">
-            <input mat-radio-button id="screening_answer_{{screening.dateofscreening}}" [value]='screening.dateofscreening' type="radio" name="screenings" [(ngModel)]="radioSelected" required>
-            {{screening.dateString}}
-        </label>
-      </td>
+    <h2 class="reserve">Reserve tickets now!</h2>
+    <form #reservationForm="ngForm" 
+        (ngSubmit)="setDiscountedAndFullAndScreening(discounted.value,full.value,radioSelected.value)">
+    <table class="screeningTable">
+        <th>Screenings</th>
+        <tr *ngFor="let screening of movie.screenings">
+            <label for="screening_answer{{screening.dateofscreening}}">
+                <input mat-radio-button 
+                id="screening_answer_{{screening.dateofscreening}}" 
+                [value]='screening.dateofscreening' 
+                type="radio" 
+                name="screenings" 
+                [(ngModel)]="radioSelected" 
+                required>
+                {{screening.dateString}}
+            </label>
+        </tr>
+    </table>
+    <table class="formTable">
       <mat-form-field>
-            <label for="discountedText">Discounted: </label>
-            <input matInput
+            <th><label for="discountedText">Discounted preis tickets: </label></th>
+            <tr><input matInput
               type="number"
               name="discountedText"
               color="white"
               [(ngModel)]="discountedText"
               pattern="[0-9]*"
               required
-              #discounted>
+              #discounted></tr>
         </mat-form-field>
           <mat-error *ngIf="discounted.invalid && (discounted.dirty || discounted.touched) && discounted.errors.required">
                 You must enter a value here.
             </mat-error>
+        <br>
         <mat-form-field>
-            <label for="fullText">Full: </label>
-            <input matInput
+            <th><label for="fullText">Full preis tickets: </label></th>
+            <tr><input matInput
                 type="number"
                 name="fullText"
                 color="accent"
                 [(ngModel)]="fullText"
                 pattern="[0-9]*"
                 required
-                #full>
+                #full></tr>
         </mat-form-field>
             <mat-error *ngIf="full.invalid && (full.dirty || full.touched) && full.errors.required">
                 You must enter a value here.
             </mat-error>
         
-        <button id="reserveButton" name="reserveButton" (click)="setDiscountedAndFullAndScreening(discounted.value,full.value,radioSelected.value)" mat-raised-button [routerLink]="['/reservation', movie.id]" [disabled]="!reservationForm.valid" color="primary">Reserve tickets</button>
+        <button mat-raised-button
+            id="reserveButton" 
+            name="reserveButton" 
+            (click)="setDiscountedAndFullAndScreening(discounted.value,full.value,radioSelected.value)"  [routerLink]="['/reservation', movie.id]" 
+            [disabled]="!reservationForm.valid">
+            Reserve tickets</button>
+        </table>
     </form>
 </body>
 </html>
