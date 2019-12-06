@@ -90,12 +90,8 @@ export class ReservationComponent implements OnChanges {
       }
 
       //console.log(this.auditorium);
-
-
       this.pipe = new DatePipe('en-US');
-
       this.screeningDate = this.pipe.transform(this.screening.dateofscreening, 'medium');
-
       this.price = this.discounted*800 + this.full* 1200;
   }
 
@@ -116,14 +112,12 @@ export class ReservationComponent implements OnChanges {
       currentSeats = +currentSeats + +this.screening.reservations[i].studentseats + +this.screening.reservations[i].normalseats;
     }
 
-
     if(currentSeats <= this.auditorium.seats){
       this.reservationService.createReservation(this.model,this.screening_id);
       this.openPopUp();
     }else{
       this.openPopUpBad();
     }
-
 
     if (!form.valid) {
       return;

@@ -4,7 +4,7 @@
     <h1 class="title">{{ movie.title }}</h1>
     <img src = {{movie.image}}>
     <table>
-        <tr><th>Runtime</th><td>{{ movie.runtime }} minutes</td><td rowspan="2"><iframe id="trailer" width="360" height="220" [src]="updateVideoUrl(movie.trailer)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td></tr>
+        <tr><th>Runtime</th><td>{{ movie.runtime }} minutes</td><td rowspan="3"><iframe id="trailer" width="360" height="220" [src]="updateVideoUrl(movie.trailer)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td></tr>
         <tr><th>Description</th><td>{{ movie.description }}</td></tr>
         <tr><th>Categories</th><td>
             <span *ngFor="let category of movie.categories">{{ category.text }}    </span>
@@ -28,44 +28,44 @@
             </label>
         </tr>
     </table>
-    <table class="formTable">
       <mat-form-field>
-            <th><label for="discountedText">Discounted preis tickets: </label></th>
-            <tr><input matInput
+            <label for="discountedText">Discounted price tickets: </label>
+            <input matInput
               type="number"
               name="discountedText"
-              color="white"
               [(ngModel)]="discountedText"
               pattern="[0-9]*"
               required
-              #discounted></tr>
+              #discounted>
         </mat-form-field>
           <mat-error *ngIf="discounted.invalid && (discounted.dirty || discounted.touched) && discounted.errors.required">
                 You must enter a value here.
             </mat-error>
-        <br>
         <mat-form-field>
-            <th><label for="fullText">Full preis tickets: </label></th>
-            <tr><input matInput
+            <label for="fullText">Full price tickets: </label>
+            <input matInput
                 type="number"
                 name="fullText"
-                color="accent"
                 [(ngModel)]="fullText"
                 pattern="[0-9]*"
                 required
-                #full></tr>
+                #full>
         </mat-form-field>
             <mat-error *ngIf="full.invalid && (full.dirty || full.touched) && full.errors.required">
                 You must enter a value here.
             </mat-error>
-        
+        <br>
+        <button mat-raised-button
+            type="button"
+            [routerLink]="['/']">
+            Back
+            </button>
         <button mat-raised-button
             id="reserveButton" 
             name="reserveButton" 
             (click)="setDiscountedAndFullAndScreening(discounted.value,full.value,radioSelected.value)"  [routerLink]="['/reservation', movie.id]" 
             [disabled]="!reservationForm.valid">
             Reserve tickets</button>
-        </table>
     </form>
 </body>
 </html>

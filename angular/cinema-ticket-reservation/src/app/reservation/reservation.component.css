@@ -18,6 +18,16 @@ button{
     margin: 15px;
 }
 
+#submitBtn:valid{
+    background-color: rgb(199, 6, 6);
+    color: white;
+}
+
+#submitBtn{
+    background-color: grey;
+    color: black;
+}
+
 .box {
     text-align: center;
     border: 1px solid white;

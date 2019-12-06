@@ -22,6 +22,7 @@ insert into Movie (image, trailer, title, description, runtime) values ('assets/
 insert into Screening (movie_id, auditorium_id, dateofscreening) values (1,1,'2019-01-01 12:30:00');
 insert into Screening (movie_id, auditorium_id, dateofscreening) values (2,1,'2019-01-01 15:00:00');
 insert into Screening (movie_id, auditorium_id, dateofscreening) values (1,2,'2019-02-01 12:30:00');
+insert into Screening (movie_id, auditorium_id, dateofscreening) values (3,1,'2019-02-01 12:30:00');
 
 insert into Reservation(screening_id, normalseats, studentseats, price, firstname, lastname, phone) values (1, 1, 1, 2000,'First', 'Visitor', '+36 20 111 1111');
 insert into Reservation(screening_id, normalseats, studentseats, price, firstname, lastname, phone) values (3, 2, 2, 4000,'Second', 'Visitor', '+36 20 222 2222');

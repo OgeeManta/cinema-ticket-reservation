@@ -81,11 +81,21 @@
 
   <br>
   <button mat-raised-button
+  class="backBtn"
+  type="button"
+  [routerLink]="['/movies', movie.id]">
+  Back
+  </button>
+
+  <button mat-raised-button
+    id="submitBtn"
+    [disabled]="!reservationForm.valid"
     [disabled]="popUpOpen"
     [disabled]="PopUpOpenBad"
     type="submit">
     Book Reservation
   </button>
+
 </div>
 
 
