@@ -31,9 +31,10 @@ export class ReservationComponent implements OnChanges {
   private screening_id: number;
 
   private screening: Screening;
-  private auditorum: Auditorium;
+  private auditorium: Auditorium;
 
   private auditoriums: Auditorium[];
+  private auditoriumScreenings: Screening[];
 
   @Input() reservation : Reservation;
   public model : Reservation = <Reservation> {};
@@ -41,9 +42,14 @@ export class ReservationComponent implements OnChanges {
   pipe: any;
 
   popUpOpen = false;
+  popUpOpenBad = false;
 
   openPopUp() {
     this.popUpOpen = true;
+  }
+
+  openPopUpBad(){
+    this.popUpOpenBad = true;
   }
 
   backOption() {
@@ -71,6 +77,20 @@ export class ReservationComponent implements OnChanges {
       this.screening = await this.screeningService.getScreening(this.screening_id);
       this.auditoriums = await this.auditoriumService.getAuditoriums();
 
+      for(var i=1;i<=this.auditoriums.length;i++){
+        this.auditoriumScreenings = await this.auditoriumService.getScreenings(i);
+        //console.log(this.auditoriumScreenings);
+        for(var j=0;j<this.auditoriumScreenings.length;j++){
+          //console.log(this.auditoriumScreenings[j]);
+          if(this.screening_id == this.auditoriumScreenings[j].id){
+            this.auditorium = await this.auditoriumService.getAuditorium(i);
+            break;
+          }
+        }
+      }
+
+      //console.log(this.auditorium);
+
 
       this.pipe = new DatePipe('en-US');
 
@@ -95,13 +115,13 @@ export class ReservationComponent implements OnChanges {
     for(var i=0;i<this.screening.reservations.length;i++){
       currentSeats = +currentSeats + +this.screening.reservations[i].studentseats + +this.screening.reservations[i].normalseats;
     }
- 
-    this.auditorum = await this.auditoriumService.getAuditorium(1);
 
-    if(currentSeats <= this.auditorum.seats){
+
+    if(currentSeats <= this.auditorium.seats){
       this.reservationService.createReservation(this.model,this.screening_id);
+      this.openPopUp();
     }else{
-      console.log("Sorry but there are not enough seats for your reservation.")
+      this.openPopUpBad();
     }
 
 

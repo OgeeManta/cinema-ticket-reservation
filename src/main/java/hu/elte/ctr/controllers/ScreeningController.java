@@ -5,6 +5,8 @@
  */
 package hu.elte.ctr.controllers;
 
+import hu.elte.ctr.entities.Auditorium;
+import hu.elte.ctr.entities.Movie;
 import hu.elte.ctr.entities.Screening;
 import hu.elte.ctr.repositories.AuditoriumRepository;
 import hu.elte.ctr.repositories.MovieRepository;
@@ -60,11 +62,20 @@ public class ScreeningController {
         }
     }
 
-    @PostMapping("/admin")
-    @Secured({ "ROLE_ADMIN" })
-    public ResponseEntity<Screening> post(@RequestBody Screening screening) {
-        Screening savedScreening = screeningRepository.save(screening);
-        return ResponseEntity.ok(savedScreening);
+    @PostMapping("/admin/{auditorium_id}/{movie_id}")
+    //@Secured({ "ROLE_ADMIN" })
+    public ResponseEntity<Screening> post(@PathVariable Integer auditorium_id, @PathVariable Integer movie_id, @RequestBody Screening screening) {
+        Optional<Auditorium> oAuditorium = auditoriumRepository.findById(auditorium_id);
+        Optional<Movie> oMovie = movieRepository.findById(movie_id);
+        if (oAuditorium.isPresent() && oMovie.isPresent()) {
+            Auditorium auditorium = oAuditorium.get();
+            Movie movie = oMovie.get();
+            screening.setAuditorium(auditorium);
+            screening.setMovie(movie);
+            return ResponseEntity.ok(screeningRepository.save(screening));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
     
     @PutMapping("/{id}")

@@ -88,7 +88,10 @@ Az alkalmazás egy mozi jegyfoglalásának a weben történő működését tesz
 ## Tervezés
 ### Architektúra terv
 #### Oldaltérkép
-(később)
+- Movies
+	- Selected movie
+		- Reserve tickets
+- Login
 
 #### Végpontok
 
@@ -151,10 +154,14 @@ cinema-ticket-reservation:
 - angular/cinema-ticket-resevation/src/assets: a filmek plakátjainak jpg fájljai
 
 ## Felhasználói dokumentáció
-(később)
+
 ### Ajánlott konfigurációk:
 
 ### Telepítés lépései:
+- GitHubról letöltjük a programot
+- NetBeans-be és Visual Studio Code-ba betöltjük a programot
+- NetBeansben Clean and Build után Run-nal elindítjuk a backend szervert
+- VS Code-ban npm install után npm start parancs kiadásával tudjuk futtatni a programot
 
 ### A program használata:
-  
+Az alkalmazást a böngészőben http://localhost:4200/ alatt érjük el.

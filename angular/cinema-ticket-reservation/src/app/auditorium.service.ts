@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Auditorium } from './auditorium';
+import { Screening } from './screening';
 
 export const httpOptions = {
   headers: new HttpHeaders({
@@ -25,6 +26,10 @@ getAuditoriums(): Promise<Auditorium[]> {
 
 getAuditorium(id: number): Promise<Auditorium> {
   return this.http.get<Auditorium>(`${this.auditoriumUrl}/${id}`, httpOptions).toPromise();
+}
+
+getScreenings(id: number): Promise<Screening[]> {
+  return this.http.get<Screening[]>(`${this.auditoriumUrl}/${id}/screenings`,httpOptions).toPromise();
 }
 
 }

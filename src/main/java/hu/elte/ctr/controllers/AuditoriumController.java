@@ -6,6 +6,7 @@
 package hu.elte.ctr.controllers;
 
 import hu.elte.ctr.entities.Auditorium;
+import hu.elte.ctr.entities.Screening;
 import hu.elte.ctr.repositories.AuditoriumRepository;
 import hu.elte.ctr.repositories.ScreeningRepository;
 import java.util.Optional;
@@ -34,22 +35,37 @@ public class AuditoriumController {
     @Autowired
     private AuditoriumRepository auditoriumRepository;
     
+    @Autowired
+    private ScreeningRepository screeningRepository;
+    
     @GetMapping("")
     //@Secured({ "ROLE_USER", "ROLE_ADMIN" })
     public ResponseEntity<Iterable<Auditorium>> getAll() {
         return ResponseEntity.ok(auditoriumRepository.findAll());
     }
+    
+    @PostMapping("/{id}/screenings")
+    public ResponseEntity<Screening> insertScreening(@PathVariable Integer id, @RequestBody Screening screening) {
+        Optional<Auditorium> oAuditorium = auditoriumRepository.findById(id);
+        if (oAuditorium.isPresent()) {
+            Auditorium auditorium = oAuditorium.get();
+            screening.setAuditorium(auditorium);
+            return ResponseEntity.ok(screeningRepository.save(screening));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
     @PutMapping("/admin/{id}")
     //@Secured({ "ROLE_ADMIN" })
-    public ResponseEntity<Auditorium> put(@PathVariable Integer id, @RequestBody Auditorium aud) {
+    public ResponseEntity<Auditorium> put(@PathVariable Integer id, @RequestBody Auditorium auditorium) {
     Optional<Auditorium> oldAud = auditoriumRepository.findById(id);
     if (!oldAud.isPresent())
     {
       ResponseEntity.notFound();
     }
-    aud.setId(id);
-    return ResponseEntity.ok(auditoriumRepository.save(aud));
+    auditorium.setId(id);
+    return ResponseEntity.ok(auditoriumRepository.save(auditorium));
   }
     
     @GetMapping("/{id}")
@@ -58,6 +74,16 @@ public class AuditoriumController {
         Optional<Auditorium> audit = auditoriumRepository.findById(id);
         if (audit.isPresent()) {
             return ResponseEntity.ok(audit.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    
+    @GetMapping("/{id}/screenings")
+    public ResponseEntity<Iterable<Screening>> labels(@PathVariable Integer id) {
+        Optional<Auditorium> oAuditorium = auditoriumRepository.findById(id);
+        if (oAuditorium.isPresent()) {
+            return ResponseEntity.ok(oAuditorium.get().getScreenings());
         } else {
             return ResponseEntity.notFound().build();
         }
