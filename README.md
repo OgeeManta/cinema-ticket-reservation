@@ -156,6 +156,10 @@ cinema-ticket-reservation:
 ## Felhasználói dokumentáció
 
 ### Ajánlott konfigurációk:
+- op.rendszer: Windows 8 vagy újabb
+- NetBeans IDE 8.2 vagy újabb
+- VS Code 1.4 vagy újabb
+- Futtatáshoz ajánlott: Google Chrome legfrissebb verziója
 
 ### Telepítés lépései:
 - GitHubról letöltjük a programot
