@@ -13,15 +13,15 @@ Az alkalmazás egy mozi jegyfoglalásának a weben történő működését tesz
 
 ### Használatieset-modell
 #### Szerepkörök:
-- ~~*Vendég*: a filmek adatait megtekintheti, de foglalni nem tud.
+- ~~*Vendég*: a filmek adatait megtekintheti, de foglalni nem tud.~~
 - *Felhasználó*: megtekintheti a filmek adatait, és foglalni is tud.
-- ~~*Admin*: módosíthatja a filmeket, és a foglalási adatokat.
+- ~~*Admin*: módosíthatja a filmeket, és a foglalási adatokat.~~
 
 ### Használati esetek (diagram):
-(később)
+![Használati eset diagram](https://github.com/OgeeManta/cinema-ticket-reservation/blob/master/haszn%C3%A1lati.jpg?raw=true)
 
 ### Egy folyamat ábrázolása:
-(később)
+![Folyamatábra](https://github.com/OgeeManta/cinema-ticket-reservation/blob/master/folyamat.jpg?raw=true)
 
 ### Funkcionális követelmények:
 #### Felhasználói történetek: 
@@ -29,11 +29,11 @@ Az alkalmazás egy mozi jegyfoglalásának a weben történő működését tesz
 - Szeretnénk megnézi egy film adatait: Rákattintottunk a „Tovább a filmhez” gombra a választott film alatt. A választott film adatlapjára irányítódunk.
 - Szeretnénk megadni a lefoglalni kívánt jegyek mennyiségét: Kiválasztottuk a számunkra megfelelő vetítési időpontot a táblázatból és a  jegyek típusát és darabszámát. 
 	- ~~Ha be vagyunk jelentkezve, akkor~~ átirányítódunk az oldalra, ahol a kiválasztott jegyek darabszámának függvényében tudunk kijelölni helyeket az adott terembe.
-	- ~~Ha nem vagyunk bejelentkezve, kapunk egy hibaüzenetet, hogy nem vagyunk bejelentkezve és egy felszólítást, hogy a továbblépéshez jelentkezzünk be.
-- ~~Szeretnénk bejelentkezni: Rákattintottunk a jobb felső sarokban lévő login gombra.
-	- ~~Ha nem vagyunk bejelentkezve és a helyes felhasználónevet és jelszót adtuk meg, akkor a rendszer bejelentkeztet a felhasználói fiókunkba.
-	 - ~~Ha nem vagyunk bejelentkezve, de nem a helyes felhasználónevet vagy jelszót adtuk meg, akkor kapunk egy hibaüzenetet, hogy rossz email-t vagy jelszót adtunk meg.
-	 - ~~Ha be vagyunk jelentkezve a felhasználói fiókunkba, akkor kapunk egy értesítést, hogy már be vagyunk jelentkezve.
+	- ~~Ha nem vagyunk bejelentkezve, kapunk egy hibaüzenetet, hogy nem vagyunk bejelentkezve és egy felszólítást, hogy a továbblépéshez jelentkezzünk be.~~
+- ~~Szeretnénk bejelentkezni: Rákattintottunk a jobb felső sarokban lévő login gombra.~~
+	- ~~Ha nem vagyunk bejelentkezve és a helyes felhasználónevet és jelszót adtuk meg, akkor a rendszer bejelentkeztet a felhasználói fiókunkba.~~
+	 - ~~Ha nem vagyunk bejelentkezve, de nem a helyes felhasználónevet vagy jelszót adtuk meg, akkor kapunk egy hibaüzenetet, hogy rossz email-t vagy jelszót adtunk meg.~~
+	 - ~~Ha be vagyunk jelentkezve a felhasználói fiókunkba, akkor kapunk egy értesítést, hogy már be vagyunk jelentkezve.~~
 - Szeretnénk kiválasztani a lefoglalni kívánt ülőhelyeket: Előzetesen kiválasztottuk, hogy mennyi jegyet szeretnénk foglalni.
 	- Ha van elég szabad hely, akkor a foglalásunk rögzítésre kerül.
 	- Ha nincs elég szabad hely, akkor hibaüzenetet kapunk.
@@ -41,17 +41,17 @@ Az alkalmazás egy mozi jegyfoglalásának a weben történő működését tesz
 ##### Vendég:
 - Szeretnénk megnézi egy film adatait: Rákattintottunk a „Tovább a filmhez” gombra a választott film alatt. A választott film adatlapjára irányítódunk.
 - Szeretnénk megadni a lefoglalni kívánt jegyek mennyiségét: Kiválasztottuk a számunkra megfelelő vetítési időpontot a táblázatból és a felugró ablakban kiválasztottuk a jegyek típusát és darabszámát. 
-	- ~~Kapunk egy értesítést, hogy a foglaláshoz felhasználói fiók szükséges és egy felugró ablakban lehetőségünk van regisztrálni.
-- ~~Szeretnénk regisztrálni: Rákattintottunk a jobb felső sarokban lévő login gombra, majd a felugró ablakban a regisztráció gombra.
-	- ~~Ha egy már létező e-mail címmel szeretnénk regisztrálni, akkor egy hibaüzenetet kapunk, hogy az e-mail címhez már tartozik felhasználói fiók.
-	- ~~Ha még az adatbázisban nem szereplő e-mail címmel szeretnénk regszisztrálni és a jelszó, valamint a jelszó megerősítés mezőben is ugyanaz a szöveg szerepel, akkor a program létrehozza a felhasználói fiókot.
-	- ~~Ha még az adatbázisban nem szereplő e-mail címmel szeretnénk regszisztrálni, de a jelszó, valamint a jelszó megerősítés mezőben nem ugyanaz a szöveg szerepel, akkor hibaüzenetet kapunk, hogy nem sikerült a jelszó megerősítése.
+	- ~~Kapunk egy értesítést, hogy a foglaláshoz felhasználói fiók szükséges és egy felugró ablakban lehetőségünk van regisztrálni.~~
+- ~~Szeretnénk regisztrálni: Rákattintottunk a jobb felső sarokban lévő login gombra, majd a felugró ablakban a regisztráció gombra.~~
+	- ~~Ha egy már létező e-mail címmel szeretnénk regisztrálni, akkor egy hibaüzenetet kapunk, hogy az e-mail címhez már tartozik felhasználói fiók.~~
+	- ~~Ha még az adatbázisban nem szereplő e-mail címmel szeretnénk regszisztrálni és a jelszó, valamint a jelszó megerősítés mezőben is ugyanaz a szöveg szerepel, akkor a program létrehozza a felhasználói fiókot.~~
+	- ~~Ha még az adatbázisban nem szereplő e-mail címmel szeretnénk regszisztrálni, de a jelszó, valamint a jelszó megerősítés mezőben nem ugyanaz a szöveg szerepel, akkor hibaüzenetet kapunk, hogy nem sikerült a jelszó megerősítése.~~
 	
 ##### Admin:
-- ~~Módosíthatja a filmek adatait, hozzáadhat új filmet, törölhet filmet.
-- ~~Módosíthatja a termek adatait.
-- ~~Törölhet foglalást.
-- ~~A vetítések adatait módosíthatja, hozzáadhat újat, törölhet.
+- ~~Módosíthatja a filmek adatait, hozzáadhat új filmet, törölhet filmet.~~
+- ~~Módosíthatja a termek adatait.~~
+- ~~Törölhet foglalást.~~
+- ~~A vetítések adatait módosíthatja, hozzáadhat újat, törölhet.~~
 
 ### Nem funkcionális követelmények:
 **termék követelmények:**
