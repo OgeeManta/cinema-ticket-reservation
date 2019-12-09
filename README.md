@@ -51,7 +51,7 @@ Az alkalmazás egy mozi jegyfoglalásának a weben történő működését tesz
 - ~~Módosíthatja a filmek adatait, hozzáadhat új filmet, törölhet filmet.~~
 - ~~Módosíthatja a termek adatait.~~
 - ~~Törölhet foglalást.~~
-- ~~A vetítések adatait módosíthatja, hozzáadhat újat, törölhet.~~
+- ~~A vetítések adatait módosíthatja, hozzáadhat újat, törölhet (de csak akkor, ha nincs rá foglalás).~~
 
 ### Nem funkcionális követelmények:
 **termék követelmények:**
@@ -89,22 +89,23 @@ Az alkalmazás egy mozi jegyfoglalásának a weben történő működését tesz
 - GET /login : bejelentkezői felület
 - GET /movies : az összes film listája
 - GET /movies/:id : egy film adatai
-- GET /reserve/:id : új foglalás felvétele
-- POST /reserve/:id : új foglalás felvétele, adatok küldése
+- POST /reservation/:id : új foglalás felvétele, adatok küldése
 
-(Nem valósult meg:
+(Csak a backenden valósult meg:
 - POST /login : bejelentkezési adatok felküldése
 - GET /register : regisztrálási felület
 - POST /register : regisztrálási adatok felküldése
-- PUT /admin/reserve/:id : foglalás módósítása
-- DELETE /admin/reserve/:id : foglalás törlése
-- PUT /admin/movies/:id : film módosítása
-- DELETE /admin/movies/:id : film törlése
-- POST /admin/movies : film hozzáadása
-- PUT /admin/screening/:id : vetítés módosítása
-- DELETE /admin/screening/:id : vetítés törlése
-- POST /admin/screening : vetítés hozzáadása
-- PUT /admin/auditorium/:id : terem módosítása)
+- GET /reservation/admin : foglalások listája
+- GET /reservation/admin/:id : egy konkrét foglalás lekérdezése
+- PUT /reservation/admin/:id : foglalás módosítása
+- DELETE /reservation/admin/:id : foglalás törlése
+- PUT /movies/admin/:id : film módosítása
+- DELETE /movies/admin/:id : film törlése
+- POST /movies/admin : film hozzáadása
+- PUT /screenings/admin/:id : vetítés módosítása
+- DELETE /screenings/admin/:id : vetítés törlése
+- POST /screenings/admin/:auditoriumid/:movieid : vetítés hozzáadása
+- PUT /auditorium/admin/:id : terem módosítása)
 
 ### Felhasználói felület-modell
 #### Kezdőlap:
