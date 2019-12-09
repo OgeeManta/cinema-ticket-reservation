@@ -43,21 +43,9 @@ public class AuditoriumController {
     public ResponseEntity<Iterable<Auditorium>> getAll() {
         return ResponseEntity.ok(auditoriumRepository.findAll());
     }
-    
-    @PostMapping("/{id}/screenings")
-    public ResponseEntity<Screening> insertScreening(@PathVariable Integer id, @RequestBody Screening screening) {
-        Optional<Auditorium> oAuditorium = auditoriumRepository.findById(id);
-        if (oAuditorium.isPresent()) {
-            Auditorium auditorium = oAuditorium.get();
-            screening.setAuditorium(auditorium);
-            return ResponseEntity.ok(screeningRepository.save(screening));
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
 
     @PutMapping("/admin/{id}")
-    //@Secured({ "ROLE_ADMIN" })
+    @Secured({ "ROLE_ADMIN" })
     public ResponseEntity<Auditorium> put(@PathVariable Integer id, @RequestBody Auditorium auditorium) {
     Optional<Auditorium> oldAud = auditoriumRepository.findById(id);
     if (!oldAud.isPresent())
@@ -80,6 +68,7 @@ public class AuditoriumController {
     }
     
     @GetMapping("/{id}/screenings")
+    //@Secured({ "ROLE_USER", "ROLE_ADMIN" })
     public ResponseEntity<Iterable<Screening>> labels(@PathVariable Integer id) {
         Optional<Auditorium> oAuditorium = auditoriumRepository.findById(id);
         if (oAuditorium.isPresent()) {

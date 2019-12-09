@@ -44,7 +44,7 @@ public class UserController {
     }
 
     @PostMapping("login")
-    public ResponseEntity<User> login(@RequestBody User user) {
+    public ResponseEntity<User> login() {
          return ResponseEntity.ok(authenticatedUser.getUser());
     } 
 }

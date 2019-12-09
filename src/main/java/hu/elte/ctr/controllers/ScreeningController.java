@@ -63,7 +63,7 @@ public class ScreeningController {
     }
 
     @PostMapping("/admin/{auditorium_id}/{movie_id}")
-    //@Secured({ "ROLE_ADMIN" })
+    @Secured({ "ROLE_ADMIN" })
     public ResponseEntity<Screening> post(@PathVariable Integer auditorium_id, @PathVariable Integer movie_id, @RequestBody Screening screening) {
         Optional<Auditorium> oAuditorium = auditoriumRepository.findById(auditorium_id);
         Optional<Movie> oMovie = movieRepository.findById(movie_id);
@@ -78,29 +78,22 @@ public class ScreeningController {
         }
     }
     
-    @PutMapping("/{id}")
-    public ResponseEntity<Screening> put(@RequestBody Screening screening, @PathVariable Integer id) {
-        Optional<Screening> oScreening = screeningRepository.findById(id);
-        if (oScreening.isPresent()) {
-            screening.setId(id);
-            return ResponseEntity.ok(screeningRepository.save(screening));
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-/*
     @PutMapping("/admin/{id}")
     @Secured({ "ROLE_ADMIN" })
     public ResponseEntity<Screening> put(@RequestBody Screening screening, @PathVariable Integer id) {
         Optional<Screening> oScreening = screeningRepository.findById(id);
         if (oScreening.isPresent()) {
+            Auditorium auditorium = oScreening.get().getAuditorium();
+            Movie movie = oScreening.get().getMovie();
+            screening.setAuditorium(auditorium);
+            screening.setMovie(movie);
             screening.setId(id);
             return ResponseEntity.ok(screeningRepository.save(screening));
         } else {
             return ResponseEntity.notFound().build();
         }
     }
-*/
+
     @DeleteMapping("/admin/{id}")
     @Secured({ "ROLE_ADMIN" })
     public ResponseEntity delete(@PathVariable Integer id) {

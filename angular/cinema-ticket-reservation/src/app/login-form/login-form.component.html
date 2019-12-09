@@ -1,4 +1,9 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">      
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  
+    <div *ngIf="message">
+
+    </div>
+
         <mat-form-field>
           <label for="username">Username</label>
           <input matInput formControlName="username" name="username" required>

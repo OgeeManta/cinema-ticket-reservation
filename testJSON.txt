@@ -1,0 +1,25 @@
+Adding movie:
+
+{
+  "image": "assets/frozen2.jpg",
+  "trailer": "bwzLiQZDw2I",
+  "title": "Frozen 2",
+  "description": "Anna, Elsa, Kristoff, Olaf and Sven leave Arendelle to travel to an ancient, autumn-bound forest of an enchanted land. They set out to find the origin of Elsa's powers in order to save their kingdom.",
+  "runtime": 103,
+  "categories": [
+    {
+      "id": 7
+    },
+    {
+      "id": 8
+    }
+  ],
+  "screenings": []
+}
+
+Adding screening for the movie: (with auditorium id and movie id in URL)
+
+{
+  "dateofscreening": "2020-02-02T09:30:00.000+0000",
+  "reservations": []
+}

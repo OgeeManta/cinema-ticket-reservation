@@ -36,10 +36,12 @@ const routes: Routes = [
     //  roles: ['ROLE_ADMIN']
     //}
   },
+  /*
   {
     path: 'screenings',
     component: ScreeningComponent
   },
+  */
   {
     path: 'login',
     component: LoginFormComponent

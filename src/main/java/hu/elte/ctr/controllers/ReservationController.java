@@ -38,13 +38,14 @@ public class ReservationController {
     @Autowired
     private ScreeningRepository screeningRepository;
 
-    @GetMapping("")
-    //@Secured({ "ROLE_USER", "ROLE_ADMIN" })
+    @GetMapping("/admin")
+    @Secured({ "ROLE_ADMIN" })
     public ResponseEntity<Iterable<Reservation>> getAll() {
         return ResponseEntity.ok(reservationRepository.findAll());
     }
     
     @PostMapping("/{screening_id}")
+    //@Secured({ "ROLE_USER", "ROLE_ADMIN" })
     public ResponseEntity<Reservation> post(@RequestBody Reservation reservation, @PathVariable Integer screening_id) {
         Optional<Screening> screening = screeningRepository.findById(screening_id);
         reservation.setScreening(screening.get());
@@ -53,7 +54,7 @@ public class ReservationController {
     }
 
     @GetMapping("/admin/{id}")
-    //@Secured({"ROLE_ADMIN" })
+    @Secured({ "ROLE_ADMIN" })
     public ResponseEntity<Reservation> get(@PathVariable Integer id) {
         Optional<Reservation> reservation = reservationRepository.findById(id);
         if (reservation.isPresent()) {
@@ -62,16 +63,9 @@ public class ReservationController {
             return ResponseEntity.notFound().build();
         }
     }
-/*
-    @PostMapping("/admin")
-    @Secured({ "ROLE_ADMIN" })
-    public ResponseEntity<Reservation> post(@RequestBody Reservation reservation) {
-        Reservation savedReservation = reservationRepository.save(reservation);
-        return ResponseEntity.ok(savedReservation);
-    }
-*/
+
     @DeleteMapping("/admin/{id}")
-    //@Secured({ "ROLE_ADMIN" })
+    @Secured({ "ROLE_ADMIN" })
     public ResponseEntity delete(@PathVariable Integer id) {
         Optional<Reservation> oReservation = reservationRepository.findById(id);
         if (oReservation.isPresent()) {

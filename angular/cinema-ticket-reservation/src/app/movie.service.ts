@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Movie } from "./movie";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-//import { httpOptions } from './auth.service';
+//import { httpOptions, AuthService } from './auth.service';
 
 export const httpOptions = {
   headers: new HttpHeaders({
@@ -19,6 +19,7 @@ export class MovieService {
 
   constructor(
     private http: HttpClient,
+    //private authService: AuthService
   ) { }
 
 getMovies(): Promise<Movie[]> {
